@@ -14,8 +14,9 @@ public abstract class MyItem : MonoBehaviour {
 		GetComponent<AudioSource>().PlayOneShot(setitemsound);
 	}
 
+	// layer 8 is "Car"
 	void OnCollisionEnter(Collision other) {
-		if (other.gameObject.tag.IndexOf ("Player") >= 0) {
+		if (other.gameObject.layer == 8) {
 			GameObject carobject = other.transform.root.gameObject;
 			AudioSource.PlayClipAtPoint(hititemsound, carobject.transform.position);
 			collidedItemAction(carobject);

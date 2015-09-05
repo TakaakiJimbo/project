@@ -1933,16 +1933,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80f5db8f3c1a3446b9d44b31eece7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisPC: 0
   maxNitroAccelaration: 35
   maxTorque: 15
   nitroVolume: 80
   maxNitrovolume: 100
+  carTorque: 0
   particleEffectLeft: {fileID: 100026}
   particleEffectRight: {fileID: 100054}
   guiSkin: {fileID: 0}
-  touchFacing: {x: 0, y: 0}
-  initTouchPos: {x: 0, y: 0}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1

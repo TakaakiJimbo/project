@@ -19,6 +19,9 @@ public class MyTimeControl : MyGameControl {
 		foreach(GameObject cameraobject in cameraobjects) {
 			carcameras.Add(cameraobject.GetComponent<MyCamera>());
 		}
+		foreach(GameObject carobject in carplayerobjects) {
+			carobject.GetComponent<UnityStandardAssets.Vehicles.Car.MyCarUserControl>().enabled = false;
+		}
 	}
 
 	void Start () {
@@ -71,7 +74,7 @@ public class MyTimeControl : MyGameControl {
 	
 	private void removeCarKinematic() {
 		foreach(GameObject carobject in carplayerobjects) {
-			carobject.GetComponent<Rigidbody>().isKinematic = false;
+			carobject.GetComponent<UnityStandardAssets.Vehicles.Car.MyCarUserControl>().enabled = true;
 		}
 	}
 

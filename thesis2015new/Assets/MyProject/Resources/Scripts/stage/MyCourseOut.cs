@@ -10,10 +10,15 @@ public class MyCourseOut : MonoBehaviour {
 		route = GameObject.Find ("Route").GetComponent<MyRoute> ();
 	}
 
+	// layer 8 is "Car"
 	void OnCollisionEnter (Collision other) {
-		if (other.gameObject.tag.IndexOf ("Player") >= 0) {
+		Debug.Log("aaa");
+		if (other.gameObject.layer == 8) {
 			GameObject carobject = other.transform.root.gameObject;
 			returnCourse(carobject);
+		}
+		else if(other.gameObject.tag == "Item") {
+			Destroy(other.transform.root.gameObject);
 		}
 	}
 
