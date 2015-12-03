@@ -18,10 +18,11 @@ public class MyCheckPoint : MonoBehaviour {
 			GameObject carobject     = other.transform.root.gameObject;
 			MyCarRank  carrank       = carobject.GetComponent<MyCarRank>();
 			Vector3    carposition   = carobject.transform.position;
-			markCheckPoint(checkpointnumber, carrank , carposition);
+
+		//	markCheckPoint(checkpointnumber, carrank , carposition);
 		}
 	}
-
+	/*
 	private void markCheckPoint(int checkpointnumber, MyCarRank carrank, Vector3 carposition) {
 		if (carrank.getCheckPoint() == checkpointnumber) {
 			rank++;
@@ -29,4 +30,5 @@ public class MyCheckPoint : MonoBehaviour {
 			AudioSource.PlayClipAtPoint (checkedsound, carposition);
 		}
 	}
+	*/
 }

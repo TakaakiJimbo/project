@@ -19,22 +19,25 @@ public class MyCarPoint : MyCar {
 
 	void Start() {
 		maxpointnumber = myroute.getPointMaxNumber();
-		reflectReverse(false);
+	//	reflectReverse(false);
+		/*
 		if(isBattleMode()) {
 			reflectStartGoalIcon(false);
 		}
 		targetcamera.showProgression(0, maxpointnumber);
-	}
-
+*/
+}
+	 /*
 	private void reflectStartGoalIcon(bool flag) {
 		targetcamera.enabledStartGoalIcon(flag);
 	}
+*/
 
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Point" && !isBattleMode()) {
 			nowpointnumber = other.gameObject.GetComponent<MyPoint>().getPointNumber();
-			warnReverseRun();
-			reflectProgression();
+		//	warnReverseRun();
+		//	reflectProgression();
 		}
 	}
 
@@ -57,6 +60,7 @@ public class MyCarPoint : MyCar {
 		return nowpointnumber;
 	}
 
+	/*
 	private void reflectReverse(bool flag) {
 		targetcamera.enabledReverse(flag);
 	}
@@ -64,6 +68,7 @@ public class MyCarPoint : MyCar {
 	private void reflectProgression() {
 		targetcamera.showProgression (nowpointnumber, maxpointnumber);
 	}
+
 	
 	private void warnReverseRun(){
 		if (checkReverseRun (nowpointnumber)) {
@@ -75,4 +80,5 @@ public class MyCarPoint : MyCar {
 		}
 		beforepointnumber = nowpointnumber;
 	}
+	*/
 }

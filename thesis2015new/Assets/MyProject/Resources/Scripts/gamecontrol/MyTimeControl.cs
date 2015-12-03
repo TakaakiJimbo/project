@@ -11,7 +11,11 @@ public class MyTimeControl : MyGameControl {
 	private TimeSpan       pastTime;
 	private DateTime       startTime;
 	private List<MyCamera> carcameras    = new List<MyCamera> ();
-	private bool           countdownflag = true;
+	private bool           countdownflag = true; 
+
+	public GameObject PlayerCar;
+	public GameObject Enemy;
+	public float interval = 1.0f; 	//Random.Range(randMin,randMax);
 
 	protected override void initialize() {
 		carplayerobjects = GameObject.FindGameObjectsWithTag ("Player");
@@ -41,6 +45,7 @@ public class MyTimeControl : MyGameControl {
 				countdownflag = false;
 				reflectCountDown(limittime - pastTime.Seconds);
 				timeStart();
+				StartCoroutine("SpawnEnemy");
 				removeCarKinematic();
 				StartCoroutine(enableReflectCountDown(1, false));
 			}
@@ -68,7 +73,7 @@ public class MyTimeControl : MyGameControl {
 
 	private void reflectCount(int minutes, int seconds, int milliseconds) {
 		foreach(MyCamera carcamera in carcameras) {
-			carcamera.showNowCount(minutes, seconds, milliseconds);
+		carcamera.showNowCount(minutes, seconds, milliseconds);
 		}
 	}
 	
@@ -82,4 +87,19 @@ public class MyTimeControl : MyGameControl {
 		enableReflectCount(true);
 		startTime = DateTime.Now;
 	}
+	
+	IEnumerator SpawnEnemy() {
+		while (true) {
+			Instantiate (Enemy, new Vector3 (UnityEngine.Random.Range (-20f, 20f), 3.5f, UnityEngine.Random.Range (PlayerCar.transform.position.z + 40f, PlayerCar.transform.position.z + 50f)), Quaternion.identity);
+			yield return new WaitForSeconds (interval);
+			if (PlayerCar == null)
+				break;
+		}
+			SpawnStop();
+	}
+
+	public void SpawnStop () {
+		StopCoroutine("SpawnEnemy");
+	}
+
 }

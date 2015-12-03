@@ -5,10 +5,10 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
+	<RootNamespace></RootNamespace>
 	<ProjectGuid>{DEB20319-E858-0731-9B08-1B45175E90C0}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
-	<RootNamespace></RootNamespace>
 	<AssemblyName>Assembly-CSharp</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_1_2;UNITY_5_1;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_LICENSE;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_EDITOR_METRICS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;CROSS_PLATFORM_INPUT</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_2_3;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;CROSS_PLATFORM_INPUT;MOBILE_INPUT</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -28,7 +28,6 @@
 	<DebugType>pdbonly</DebugType>
 	<Optimize>true</Optimize>
 	<OutputPath>Temp\bin\Release\</OutputPath>
-	<DefineConstants>TRACE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,6 +45,19 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\CameraSwitch.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\Joystick.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\LevelReset.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\MobileControlRig.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
+     <Compile Include="Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
      <Compile Include="Assets\JT\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\JT\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
      <Compile Include="Assets\JT\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -192,26 +204,25 @@
      <Compile Include="Assets\JT\script\TestSlider.cs" />
      <Compile Include="Assets\JT\script\winPlayer.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\CameraFade.cs" />
+     <Compile Include="Assets\MyProject\Resources\Scripts\EnemyAppearance.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\GameObjectExtensions.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\MeshCombiner.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\camera\MyAbstractTargetFollower1.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\camera\MyCamera.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\car\MyCar.cs" />
-     <Compile Include="Assets\MyProject\Resources\Scripts\car\MyCarItem.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\car\MyCarLifePoint.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\car\MyCarPoint.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\car\MyCarRank.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\car\MyCarUserControl.cs" />
+     <Compile Include="Assets\MyProject\Resources\Scripts\createLoad.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\gamecontrol\MyGameControl.cs" />
-     <Compile Include="Assets\MyProject\Resources\Scripts\gamecontrol\MyRankControl.cs" />
+     <Compile Include="Assets\MyProject\Resources\Scripts\gamecontrol\MyLevelControl.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\gamecontrol\MyTimeControl.cs" />
-     <Compile Include="Assets\MyProject\Resources\Scripts\item\MyBanana.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\item\MyBomb.cs" />
-     <Compile Include="Assets\MyProject\Resources\Scripts\item\MyIron.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\item\MyItem.cs" />
-     <Compile Include="Assets\MyProject\Resources\Scripts\item\MyItemBox.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\route\MyPoint.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\route\MyRoute.cs" />
+     <Compile Include="Assets\MyProject\Resources\Scripts\score.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\stage\MyCourseOut.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\stage\checkpoint\MyCheckPoint.cs" />
      <Compile Include="Assets\MyProject\Resources\Scripts\stage\checkpoint\MyGoal.cs" />
@@ -239,8 +250,6 @@
      <Compile Include="Assets\OnlineProject\SampleScenes\Menu\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\OnlineProject\SampleScenes\Menu\Scripts\ReturnToMainMenu.cs" />
      <Compile Include="Assets\OnlineProject\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
-     <Compile Include="Assets\OnlineProject\SampleScenes\Scripts\CameraSwitch.cs" />
-     <Compile Include="Assets\OnlineProject\SampleScenes\Scripts\LevelReset.cs" />
      <Compile Include="Assets\OnlineProject\SampleScenes\Scripts\ParticleSceneControls.cs" />
      <Compile Include="Assets\OnlineProject\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
      <Compile Include="Assets\OnlineProject\SampleScenes\Scripts\SlowMoButton.cs" />
@@ -344,7 +353,6 @@
      <Compile Include="Assets\OnlineProject\Standard Assets\Utility\FOVKick.cs" />
      <Compile Include="Assets\OnlineProject\Standard Assets\Utility\FPSCounter.cs" />
      <Compile Include="Assets\OnlineProject\Standard Assets\Utility\FollowTarget.cs" />
-     <Compile Include="Assets\OnlineProject\Standard Assets\Utility\ForcedReset.cs" />
      <Compile Include="Assets\OnlineProject\Standard Assets\Utility\LerpControlledBob.cs" />
      <Compile Include="Assets\OnlineProject\Standard Assets\Utility\ObjectResetter.cs" />
      <Compile Include="Assets\OnlineProject\Standard Assets\Utility\ParticleSystemDestroyer.cs" />
@@ -422,6 +430,7 @@
      <None Include="Assets\OnlineProject\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader" />
      <None Include="Assets\JT\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
      <None Include="Assets\OnlineProject\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
+     <None Include="Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\JT\NGUI\Resources\Shaders\Unlit - Premultiplied Colored (AlphaClip).shader" />
      <None Include="Assets\OnlineProject\Standard Assets\Effects\ImageEffects\Shaders\ContrastComposite.shader" />
      <None Include="Assets\OnlineProject\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
@@ -543,6 +552,9 @@
      <None Include="Assets\OnlineProject\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\OnlineProject\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\OnlineProject\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

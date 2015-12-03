@@ -7,8 +7,6 @@ Project("{F7196DDC-C003-8E04-1339-7A66674F827F}") = "thesis2015new", "Assembly-C
 EndProject
 Project("{F7196DDC-C003-8E04-1339-7A66674F827F}") = "thesis2015new", "Assembly-CSharp-Editor.csproj", "{772F28CD-66C3-4610-49A7-53575DB6E514}"
 EndProject
-Project("{F7196DDC-C003-8E04-1339-7A66674F827F}") = "thesis2015new", "Assembly-UnityScript.unityproj", "{5FE72754-FA9B-917A-3985-FACF5EE8C131}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,15 +25,11 @@ Global
 		{772F28CD-66C3-4610-49A7-53575DB6E514}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{772F28CD-66C3-4610-49A7-53575DB6E514}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{772F28CD-66C3-4610-49A7-53575DB6E514}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FE72754-FA9B-917A-3985-FACF5EE8C131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FE72754-FA9B-917A-3985-FACF5EE8C131}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FE72754-FA9B-917A-3985-FACF5EE8C131}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FE72754-FA9B-917A-3985-FACF5EE8C131}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																																																																												GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																																																																																																																																																																	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

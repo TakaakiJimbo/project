@@ -6,14 +6,15 @@ public class MyCamera : MonoBehaviour {
 
 	private Text timecounter;
 	private Text lifepoint;
-	private Text progression;
-	private RawImage keepitem;
-	private RawImage reverse;
+	private Text score;
+//	private Text progression;
+//	private RawImage keepitem;
+//	private RawImage reverse;
 	private RawImage rank;
 	private RawImage startcount;
 	private RawImage result;
-	private RawImage starticon;
-	private RawImage goalicon;
+//	private RawImage starticon;
+//	private RawImage goalicon;
 
 	private bool  resultflag;
 	private Color fadeincolor = new Color(0,0,0,1);	
@@ -22,47 +23,48 @@ public class MyCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		starticon   = gameObject.FindDeep("StartIcon").gameObject.GetComponent<RawImage>();
-		goalicon    = gameObject.FindDeep("GoalIcon").gameObject.GetComponent<RawImage>();
+		//starticon   = gameObject.FindDeep("StartIcon").gameObject.GetComponent<RawImage>();
+		//goalicon    = gameObject.FindDeep("GoalIcon").gameObject.GetComponent<RawImage>();
 		timecounter = gameObject.FindDeep("TimeCounter").gameObject.GetComponent<Text>(); 
 		lifepoint   = gameObject.FindDeep("LifePoint").gameObject.GetComponent<Text>();
-		progression = gameObject.FindDeep("Progression").gameObject.GetComponent<Text>();
-		keepitem    = gameObject.FindDeep("KeepItem").gameObject.GetComponent<RawImage>();
-		reverse     = gameObject.FindDeep("Reverse").gameObject.GetComponent<RawImage>();
-		rank        = gameObject.FindDeep("Rank").gameObject.GetComponent<RawImage>();
+		score   	= gameObject.FindDeep("Score").gameObject.GetComponent<Text>();
+		//progression = gameObject.FindDeep("Progression").gameObject.GetComponent<Text>();
+		//keepitem    = gameObject.FindDeep("KeepItem").gameObject.GetComponent<RawImage>();
+		//reverse     = gameObject.FindDeep("Reverse").gameObject.GetComponent<RawImage>();
+		//rank        = gameObject.FindDeep("Rank").gameObject.GetComponent<RawImage>();
 		startcount  = gameObject.FindDeep("StartCount").gameObject.GetComponent<RawImage>();
 		result      = gameObject.FindDeep("Result").gameObject.GetComponent<RawImage>();
 //		QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 30;
 		enabledResult(false);
 	}
-
+/*
 	public void enabledStartGoalIcon(bool flag) {
 		starticon.enabled   = flag;
 		goalicon.enabled    = flag;
 	}
-
+*/
 	public void enabledCount(bool flag) {
 		timecounter.enabled = flag;
 	}
-	
+
 	public void enabledCountDown(bool flag) {
 		startcount.enabled = flag ;
 	}
-
+/*
 	private void enabledRank(bool flag) {
 		rank.enabled = flag;
 	}
-
+*/
 	private void enabledResult(bool flag) {
 		resultflag     = flag;
 		result.enabled = flag;
 	}
-	
+	/*
 	public void enabledReverse(bool flag) {
 		reverse.enabled = flag;
 	}
-	
+	*/
 	private void fadeDied() {
 		gameObject.FindDeep("MainCamera").GetComponent<CameraFade>().StartFade(diedcolor, 5);
 	}
@@ -78,7 +80,7 @@ public class MyCamera : MonoBehaviour {
 	public bool isResult() {
 		return resultflag;
 	}
-
+	/*
 	public void receiveGoal(int changepoint, int nowrank) {
 		if(changepoint == 3) {
 			enabledResult(true);
@@ -91,11 +93,12 @@ public class MyCamera : MonoBehaviour {
 			}
 		}
 	}
+	*/
 
 	public void showCountDown(int count) {
 		startcount.texture = Resources.Load<Texture> ("Materials/canvas/count/" + count);
 	}
-
+	/*
 	public void showItem(string item) {
 		if (item == "") {
 			keepitem.enabled = false;
@@ -105,7 +108,8 @@ public class MyCamera : MonoBehaviour {
 			keepitem.texture = Resources.Load<Texture>("Materials/canvas/item/" + item);
 		}
 	}
-	
+*/
+
 	public void showLifePoint(int point) {
 		if (point > 0) {
 			lifepoint.text = new string ('♥', point);
@@ -115,12 +119,20 @@ public class MyCamera : MonoBehaviour {
 		}
 	}
 
+
 	public void showNowCount(int minutes, int seconds, int milliseconds) {
 		if (!isResult()) {
 			timecounter.text = minutes.ToString().PadLeft (2, '0') + ':' + seconds.ToString().PadLeft (2, '0') + ':' + milliseconds.ToString().PadLeft (3, '0');
 		}
 	}
 
+	public void showNowScore(int nowScore) {
+		if (!isResult()) {
+			score.text = "SCORE:" + nowScore.ToString();
+		}
+	}
+
+	/*
 	public void showNowRank(int changepoint, int nowrank) {
 		StartCoroutine(showRank(0, true));
 		if (nowrank > 0 && nowrank < 9) {
@@ -149,4 +161,5 @@ public class MyCamera : MonoBehaviour {
 		yield return new WaitForSeconds(delay);
 		enabledRank(flag);
 	}
+	*/
 }

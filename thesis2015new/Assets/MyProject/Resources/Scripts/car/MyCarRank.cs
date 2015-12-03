@@ -12,7 +12,7 @@ public class MyCarRank : MyCar {
 	}
 
 	void Start() {
-		StartCoroutine(targetcamera.showRank(0, false));
+	//	StartCoroutine(targetcamera.showRank(0, false));
 	}
 
 	public int getCheckPoint() {
@@ -23,7 +23,7 @@ public class MyCarRank : MyCar {
 		}
 		return -1;
 	}
-
+	/*
 	private void setRank(int changepoint, int nowrank) {
 		rank [changepoint] = nowrank;
 	}
@@ -36,6 +36,7 @@ public class MyCarRank : MyCar {
 	private void reflectRank(int changepoint, int nowrank) {
 		rankcontrol.setCarRank(identifier, changepoint, nowrank);
 		targetcamera.receiveGoal(changepoint, nowrank);
-		targetcamera.showNowRank(changepoint, nowrank);
+	//	targetcamera.showNowRank(changepoint, nowrank);
 	}
+*/
 }
