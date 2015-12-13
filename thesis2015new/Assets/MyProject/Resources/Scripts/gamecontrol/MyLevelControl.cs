@@ -1,19 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
-public class MyRankControl : MyGameControl {
+public class MyLevelControl : MonoBehaviour {
 
-	List<List<int>> ranklist           = new List<List<int>> ();
-	List<int> rankinitialization       = new List<int> (){0, 0, 0, 0};
-
-	protected override void initialize() {
-		for(int i = 0; i < number; i++) {
-			ranklist.Add (rankinitialization);
-		}
+	// Use this for initialization
+	void Start () {
+	
 	}
-
-	public void setCarRank(int identifier, int changepoint, int nowrank) {
-		ranklist[identifier][changepoint] = nowrank;
+	
+	// Update is called once per frame
+	void Update () {
+	
 	}
+	/*
+	public void LevelUP(int level)
+	{
+		interval = interval * 0.9f;
+
+	}
+	*/
+
 }

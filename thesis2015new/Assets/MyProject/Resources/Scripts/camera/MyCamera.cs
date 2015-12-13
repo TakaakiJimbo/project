@@ -5,7 +5,7 @@ using System.Collections;
 public class MyCamera : MonoBehaviour {
 
 	private Text timecounter;
-	private Text lifepoint;
+	private Text level;
 	private Text score;
 //	private Text progression;
 //	private RawImage keepitem;
@@ -26,7 +26,7 @@ public class MyCamera : MonoBehaviour {
 		//starticon   = gameObject.FindDeep("StartIcon").gameObject.GetComponent<RawImage>();
 		//goalicon    = gameObject.FindDeep("GoalIcon").gameObject.GetComponent<RawImage>();
 		timecounter = gameObject.FindDeep("TimeCounter").gameObject.GetComponent<Text>(); 
-		lifepoint   = gameObject.FindDeep("LifePoint").gameObject.GetComponent<Text>();
+		level   = gameObject.FindDeep("Level").gameObject.GetComponent<Text>();
 		score   	= gameObject.FindDeep("Score").gameObject.GetComponent<Text>();
 		//progression = gameObject.FindDeep("Progression").gameObject.GetComponent<Text>();
 		//keepitem    = gameObject.FindDeep("KeepItem").gameObject.GetComponent<RawImage>();
@@ -110,12 +110,9 @@ public class MyCamera : MonoBehaviour {
 	}
 */
 
-	public void showLifePoint(int point) {
-		if (point > 0) {
-			lifepoint.text = new string ('♥', point);
-		}
-		else {
-			lifepoint.text = "";
+	 public void showNowLevel(int nowLevel) {
+		if (!isResult()) {
+			level.text = "LEVEL " + nowLevel.ToString();
 		}
 	}
 

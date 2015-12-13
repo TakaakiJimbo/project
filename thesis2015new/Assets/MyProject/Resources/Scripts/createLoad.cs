@@ -5,6 +5,7 @@ public class createLoad : MonoBehaviour {
 	
 	public GameObject Load1;
 	public GameObject Load2;
+	public GameObject checkPoint;
 	public int border = 250;
 
 	void Update (){
@@ -22,6 +23,7 @@ public class createLoad : MonoBehaviour {
 			border += 250;
 			Vector3 temp = new Vector3 (0,0,border);
 			Load2.transform.position = temp;
+			checkPoint.SetActiveRecursively(true);
 		}
 	}
 }

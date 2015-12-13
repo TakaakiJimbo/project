@@ -15,7 +15,8 @@ public class MyTimeControl : MyGameControl {
 
 	public GameObject PlayerCar;
 	public GameObject Enemy;
-	public float interval = 1.0f; 	//Random.Range(randMin,randMax);
+	static public float interval; 	//Random.Range(randMin,randMax);
+	public float firstInterval = 0.5f;
 
 	protected override void initialize() {
 		carplayerobjects = GameObject.FindGameObjectsWithTag ("Player");
@@ -31,6 +32,7 @@ public class MyTimeControl : MyGameControl {
 	void Start () {
 		startTime = DateTime.Now;
 		enableReflectCount(false);
+		interval = firstInterval;
 	}
 	
 	void Update () {
@@ -46,6 +48,7 @@ public class MyTimeControl : MyGameControl {
 				reflectCountDown(limittime - pastTime.Seconds);
 				timeStart();
 				StartCoroutine("SpawnEnemy");
+				StartCoroutine("ProhibitStop");
 				removeCarKinematic();
 				StartCoroutine(enableReflectCountDown(1, false));
 			}
@@ -90,7 +93,9 @@ public class MyTimeControl : MyGameControl {
 	
 	IEnumerator SpawnEnemy() {
 		while (true) {
-			Instantiate (Enemy, new Vector3 (UnityEngine.Random.Range (-20f, 20f), 3.5f, UnityEngine.Random.Range (PlayerCar.transform.position.z + 40f, PlayerCar.transform.position.z + 50f)), Quaternion.identity);
+			Instantiate (Enemy, new Vector3 (UnityEngine.Random.Range (-20f, 20f), 3.5f, 
+			                                 UnityEngine.Random.Range (PlayerCar.transform.position.z + 40f, PlayerCar.transform.position.z + 50f))
+			             					 ,Quaternion.identity);
 			yield return new WaitForSeconds (interval);
 			if (PlayerCar == null)
 				break;
@@ -98,8 +103,20 @@ public class MyTimeControl : MyGameControl {
 			SpawnStop();
 	}
 
+	IEnumerator ProhibitStop(){
+		while (true) {
+			yield return new WaitForSeconds (interval * 5.0f);
+			Instantiate (Enemy, new Vector3 (PlayerCar.transform.position.x, 7.0f, 
+		                                 PlayerCar.transform.position.z + 1f), Quaternion.identity);
+		}
+	}
+	
 	public void SpawnStop () {
 		StopCoroutine("SpawnEnemy");
+		StopCoroutine("ProhibitStop");
 	}
-
+	
+	static public void ShortInterval () {
+		interval = interval * 0.9f;
+	}
 }

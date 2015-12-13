@@ -7,7 +7,7 @@ public class MyCarLifePoint : MyCar  {
 	[SerializeField] private AudioClip diedsound;
 
 	void Start() {
-		reflectLifePoint();
+	
 	}
 
 	void Update(){
@@ -26,7 +26,7 @@ public class MyCarLifePoint : MyCar  {
 				Invoke("diedAnimation", 1);
 				Invoke("Debugreturn", 3);
 			}
-			reflectLifePoint();
+			//reflectLifePoint();
 		}
 	}
 
@@ -42,12 +42,12 @@ public class MyCarLifePoint : MyCar  {
 	public bool isAliveLifePoint() {
 		return lifepoint > 0;
 	}
-
-	private void reflectLifePoint() {
-		targetcamera.showLifePoint(lifepoint);
+	/*
+	public void reflectLevel() {
+		targetcamera.showNowLevel(MyCheckPoint.level);
 	}
-	
-	private void diedAnimation() {
+	*/
+	private  void diedAnimation() {
 		gameObject.GetComponent<UnityStandardAssets.Vehicles.Car.MyCarUserControl>().enabled = false;
 		gameObject.GetComponent<Rigidbody>().isKinematic = true;
 		gameObject.GetComponent<Detonator>().Explode();
