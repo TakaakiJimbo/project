@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MyCarLifePoint : MyCar  {
 
-	[SerializeField] private int       lifepoint = 3;	//  if lifepoint  > 0, the car will be alive
+	[SerializeField] private int       lifepoint = 2;	//  if lifepoint  > 0, the car will be alive
 	[SerializeField] private AudioClip diedsound;
 
 	void Start() {
@@ -11,9 +11,9 @@ public class MyCarLifePoint : MyCar  {
 	}
 
 	void Update(){
-		if( transform.position.y < -30){
+		if( transform.position.y < -20){
 			lifepoint = 0;
-			changeLifePoint(0);
+			Invoke("diedAnimation", 0.5f);
 		}
 		targetcamera.showNowScore((int)transform.position.z);
 	}
@@ -24,16 +24,10 @@ public class MyCarLifePoint : MyCar  {
 				lifepoint = 0;
 			//	gameObject.GetComponent<MyCarRank>().receiveRank(3, -1);	// finish mode, failed to goal
 				Invoke("diedAnimation", 1);
-				Invoke("Debugreturn", 3);
 			}
 			//reflectLifePoint();
 		}
 	}
-
-	private void Debugreturn(){
-		Application.LoadLevel("Debug");
-	}
-
 
 	public int getLifePoint() {
 		return lifepoint;
@@ -42,16 +36,19 @@ public class MyCarLifePoint : MyCar  {
 	public bool isAliveLifePoint() {
 		return lifepoint > 0;
 	}
-	/*
-	public void reflectLevel() {
-		targetcamera.showNowLevel(MyCheckPoint.level);
-	}
-	*/
+	
 	private  void diedAnimation() {
 		gameObject.GetComponent<UnityStandardAssets.Vehicles.Car.MyCarUserControl>().enabled = false;
 		gameObject.GetComponent<Rigidbody>().isKinematic = true;
 		gameObject.GetComponent<Detonator>().Explode();
-		iTween.ScaleTo(gameObject, iTween.Hash("x", 0, "y  ", 0, "z", 0, "time", 0.0f));
+		if(transform.position.y > -20){
+			iTween.ScaleTo (gameObject, iTween.Hash ("x", 0, "y  ", 0, "z", 0, "time", 0.0f));
+		}
 		AudioSource.PlayClipAtPoint (diedsound, gameObject.transform.position);
+		Invoke("Debugreturn",2);
+	}
+
+		private void Debugreturn(){
+		Application.LoadLevel("Debug");
 	}
 }
