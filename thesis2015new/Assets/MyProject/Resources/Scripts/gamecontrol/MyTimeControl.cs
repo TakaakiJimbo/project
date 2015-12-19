@@ -16,7 +16,7 @@ public class MyTimeControl : MyGameControl {
 	public GameObject PlayerCar;
 	public GameObject Enemy;
 	static public float interval; 	//Random.Range(randMin,randMax);
-	public float firstInterval = 0.5f;
+	public float firstInterval = 2.0f;
 
 	protected override void initialize() {
 		carplayerobjects = GameObject.FindGameObjectsWithTag ("Player");

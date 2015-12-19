@@ -41,8 +41,10 @@ public class MyCarLifePoint : MyCar  {
 		gameObject.GetComponent<UnityStandardAssets.Vehicles.Car.MyCarUserControl>().enabled = false;
 		gameObject.GetComponent<Rigidbody>().isKinematic = true;
 		gameObject.GetComponent<Detonator>().Explode();
-		if(transform.position.y > -20){
+		if (transform.position.y > -20) {
 			iTween.ScaleTo (gameObject, iTween.Hash ("x", 0, "y  ", 0, "z", 0, "time", 0.0f));
+		} else {
+			gameObject.SetActiveRecursively(false);
 		}
 		AudioSource.PlayClipAtPoint (diedsound, gameObject.transform.position);
 		Invoke("Debugreturn",2);

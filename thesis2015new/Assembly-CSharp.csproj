@@ -398,12 +398,6 @@
      <Compile Include="Assets\OnlineProject\Standard Assets\Vehicles\Car\Scripts\SkidTrail.cs" />
      <Compile Include="Assets\OnlineProject\Standard Assets\Vehicles\Car\Scripts\Suspension.cs" />
      <Compile Include="Assets\OnlineProject\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
-     <Compile Include="Assets\Sky FX Pack\Scripts\LightBeamsControlScript.cs" />
-     <Compile Include="Assets\Sky FX Pack\Scripts\LookAtBehaviour.cs" />
-     <Compile Include="Assets\Sky FX Pack\Scripts\LookAtCameraBehaviour.cs" />
-     <Compile Include="Assets\Sky FX Pack\Scripts\RayBehavior.cs" />
-     <Compile Include="Assets\Sky FX Pack\Scripts\RotateBehaviour.cs" />
-     <Compile Include="Assets\Sky FX Pack\Scripts\ScrollBehaviour.cs" />
      <None Include="Assets\JT\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\OnlineProject\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\OnlineProject\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
