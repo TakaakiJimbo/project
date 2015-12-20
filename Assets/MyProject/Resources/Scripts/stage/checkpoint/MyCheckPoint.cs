@@ -21,7 +21,7 @@ public class MyCheckPoint : MonoBehaviour {
 			levelControl.levelup();
 			//MyCarRank  carrank       = carobject.GetComponent<MyCarRank>();
 			Vector3    carposition   = carobject.transform.position;		
-			AudioSource.PlayClipAtPoint (checkedsound, carposition);
+			AudioSource.PlayClipAtPoint(checkedsound, carobject.transform.position);
 			gameObject.SetActiveRecursively(false);
 			
 			//	markCheckPoint(checkpointnumber, carrank , carposition);
