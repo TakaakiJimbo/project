@@ -70,7 +70,7 @@ public class MyCamera : MonoBehaviour {
 	}
 
 	public void showCountDown(int count) {
-		startcount.texture = Resources.Load<Texture> ("Materials/canvas/count/" + count);
+		startcount.texture = Resources.Load<Texture> ("count/" + count);
 	}
 
 	 public void showNowLevel(int nowLevel) {
