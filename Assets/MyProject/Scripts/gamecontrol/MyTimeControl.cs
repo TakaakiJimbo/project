@@ -93,9 +93,16 @@ public class MyTimeControl : MyGameControl {
 	
 	IEnumerator SpawnEnemy() {
 		while (true) {
-			Instantiate (Enemy, new Vector3 (UnityEngine.Random.Range (-20f, 20f), 3.5f, 
+			 GameObject obj = (GameObject)Instantiate(Enemy, new Vector3 (UnityEngine.Random.Range (-20f, 20f), 3.5f, 
 			                                 UnityEngine.Random.Range (PlayerCar.transform.position.z + 40f, PlayerCar.transform.position.z + 50f))
 			             					 ,Quaternion.identity);
+			obj.transform.parent = transform;
+			 if(MyLevelControl.level < 3){
+				Destroy(obj , 10);
+			}else{
+				Destroy(obj , 5);
+			}
+				Resources.UnloadUnusedAssets();
 			yield return new WaitForSeconds (interval);
 			if (PlayerCar == null)
 				break;
@@ -106,8 +113,11 @@ public class MyTimeControl : MyGameControl {
 	IEnumerator ProhibitStop(){
 		while (true) {
 			yield return new WaitForSeconds (interval * 5.0f);
-			Instantiate (Enemy, new Vector3 (PlayerCar.transform.position.x, 7.0f, 
+			GameObject obj = (GameObject)Instantiate (Enemy, new Vector3 (PlayerCar.transform.position.x, 7.0f, 
 		                                 PlayerCar.transform.position.z + 1f), Quaternion.identity);
+			obj.transform.parent = transform;
+			Destroy(obj,5 * interval);
+			Resources.UnloadUnusedAssets();
 		}
 	}
 	

@@ -5,6 +5,8 @@ public class MyCarLifePoint : MyCar  {
 
 	[SerializeField] private int       lifepoint = 2;	//  if lifepoint  > 0, the car will be alive
 	[SerializeField] private AudioClip diedsound;
+	[SerializeField] private AudioClip diedsound2;
+	Texture2D blackTex;
 
 	void Start() {
 	
@@ -43,10 +45,16 @@ public class MyCarLifePoint : MyCar  {
 		gameObject.GetComponent<Detonator>().Explode();
 		if (transform.position.y > -20) {
 			iTween.ScaleTo (gameObject, iTween.Hash ("x", 0, "y  ", 0, "z", 0, "time", 0.0f));
+			AudioSource.PlayClipAtPoint (diedsound, gameObject.transform.position);
 		} else {
 			gameObject.SetActiveRecursively(false);
+			AudioSource.PlayClipAtPoint (diedsound2, gameObject.transform.position);
 		}
-		AudioSource.PlayClipAtPoint (diedsound, gameObject.transform.position);
+		/*
+			GUI.color = new Color(1f,1f,1f,0.3f);
+			GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),blackTex);
+			GUI.color = new Color(1,1,1,1);
+		*/
 		Invoke("Debugreturn",2);
 	}
 

@@ -75,7 +75,7 @@ public class MyCamera : MonoBehaviour {
 
 	 public void showNowLevel(int nowLevel) {
 		if (!isResult()) {
-			level.text = "LEVEL " + nowLevel.ToString();
+			level.text = "LEVEL:" + nowLevel.ToString();
 		}
 	}
 	
@@ -87,7 +87,7 @@ public class MyCamera : MonoBehaviour {
 
 	public void showNowScore(int nowScore) {
 		if (!isResult()) {
-			score.text = "SCORE:" + nowScore.ToString() + '\n'+ (Profiler.usedHeapSize / 1048576).ToString() + " / " + (SystemInfo.systemMemorySize).ToString() + " MB";;
+			score.text = "SCORE:" + nowScore.ToString() + '\n'+ (Profiler.usedHeapSize / 1048576).ToString() + "/" + (SystemInfo.systemMemorySize).ToString() + " MB";;
 		
 		}
 	}
