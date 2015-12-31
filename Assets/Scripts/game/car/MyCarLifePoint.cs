@@ -5,13 +5,19 @@ public class MyCarLifePoint : MyCar  {
 
 	[SerializeField] private int       lifepoint = 2;	//  if lifepoint  > 0, the car will be alive
 	[SerializeField] private AudioClip diedsound;
-	[SerializeField] private AudioClip diedsound2;
 	GameObject TimeControl;
+	GameObject FallSound;
 
 	void Start() {
 		TimeControl = GameObject.Find("GameControl");
+		FallSound = GameObject.Find ("Fall");
 		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(false); 
 		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(false); 
+		if(PlayerPrefs.HasKey("Highscore")){
+			PlayerPrefs.SetInt("HighScore", 0); 
+		}
+		Debug.Log (PlayerPrefs.GetInt("HighScore"));
+		targetcamera.showHighScore(PlayerPrefs.GetInt("HighScore"));
 	}
 
 	void Update(){
@@ -50,14 +56,16 @@ public class MyCarLifePoint : MyCar  {
 			AudioSource.PlayClipAtPoint (diedsound, gameObject.transform.position);
 		} else {
 			gameObject.SetActiveRecursively(false);
-			AudioSource.PlayClipAtPoint (diedsound2, gameObject.transform.position);
+			FallSound fall = FallSound.GetComponent<FallSound> ();
+			fall.fallsound ();
 		}
-		/*
-			GUI.color = new Color(1f,1f,1f,0.3f);
-			GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),blackTex);
-			GUI.color = new Color(1,1,1,1);
-		*/
+			
+		if (PlayerPrefs.GetInt("HighScore") < (int)transform.position.z) {
+			PlayerPrefs.SetInt ("HighScore", (int)transform.position.z);
+		}
 
+		Debug.Log (PlayerPrefs.GetInt("HighScore"));
+		targetcamera.showHighScore(PlayerPrefs.GetInt("HighScore"));
 		Invoke("Debugreturn",2);
 	}
 		private void Debugreturn(){
@@ -65,6 +73,5 @@ public class MyCarLifePoint : MyCar  {
 		timeControl.enableReflectCount(false);
 		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(true); 
 		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(true); 
-		//Application.LoadLevel("Debug");
 	}
 }

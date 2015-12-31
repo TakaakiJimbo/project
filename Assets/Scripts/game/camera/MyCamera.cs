@@ -7,6 +7,7 @@ public class MyCamera : MonoBehaviour {
 	private Text timecounter;
 	private Text level;
 	private Text score;
+	private Text highscore;
 	private RawImage rank;
 	private RawImage startcount;
 	private RawImage result;
@@ -20,6 +21,7 @@ public class MyCamera : MonoBehaviour {
 		timecounter = gameObject.FindDeep("TimeCounter").gameObject.GetComponent<Text>(); 
 		level       = gameObject.FindDeep("Level").gameObject.GetComponent<Text>();
 		score   	= gameObject.FindDeep("Score").gameObject.GetComponent<Text>();
+		highscore   = gameObject.FindDeep("HighScore").gameObject.GetComponent<Text>();
 		startcount  = gameObject.FindDeep("StartCount").gameObject.GetComponent<RawImage>();
 		result      = gameObject.FindDeep("Result").gameObject.GetComponent<RawImage>();
 //		QualitySettings.vSyncCount = 0;
@@ -87,8 +89,14 @@ public class MyCamera : MonoBehaviour {
 
 	public void showNowScore(int nowScore) {
 		if (!isResult()) {
-			score.text = "SCORE:" + nowScore.ToString() + '\n'+ (Profiler.usedHeapSize / 1048576).ToString() + "/" + (SystemInfo.systemMemorySize).ToString() + " MB";;
-		
+			score.text = "SCORE:" + nowScore.ToString() + '\n'+ (Profiler.usedHeapSize / 1048576).ToString() + "/" + (SystemInfo.systemMemorySize).ToString() + " MB";
 		}
 	}
+
+	public void showHighScore(int highScore) {
+		if (!isResult ()) {
+			highscore.text = "HIGHSCORE:" + highScore.ToString ();
+		}
+	}
+
 }
