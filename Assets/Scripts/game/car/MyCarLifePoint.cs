@@ -5,11 +5,9 @@ public class MyCarLifePoint : MyCar  {
 
 	[SerializeField] private int       lifepoint = 2;	//  if lifepoint  > 0, the car will be alive
 	[SerializeField] private AudioClip diedsound;
-	GameObject TimeControl;
 	GameObject FallSound;
 
 	void Start() {
-		TimeControl = GameObject.Find("GameControl");
 		FallSound = GameObject.Find ("Fall");
 		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(false); 
 		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(false); 
@@ -66,12 +64,11 @@ public class MyCarLifePoint : MyCar  {
 
 		Debug.Log (PlayerPrefs.GetInt("HighScore"));
 		targetcamera.showHighScore(PlayerPrefs.GetInt("HighScore"));
-		Invoke("Debugreturn",2);
-	}
-		private void Debugreturn(){
-		MyTimeControl timeControl = TimeControl.GetComponent<MyTimeControl> ();
-		timeControl.enableReflectCount(false);
 		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(true); 
 		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(true); 
+		Invoke("countstop",3);
+	}
+		private void countstop(){
+		Destroy(gameObject);
 	}
 }

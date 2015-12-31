@@ -37,7 +37,9 @@ public class MyTimeControl : MyGameControl {
 	
 	void Update () {
 		pastTime = DateTime.Now - startTime;
+		if(PlayerCar){
 		reflectCount(pastTime.Minutes, pastTime.Seconds, pastTime.Milliseconds);
+		}
 		if(countdownflag) {
 			int time = limittime - pastTime.Seconds;
 			if(time > 0) {

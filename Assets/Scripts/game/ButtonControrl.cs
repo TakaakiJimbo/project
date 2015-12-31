@@ -11,7 +11,7 @@ public class ButtonControrl : MonoBehaviour {
 	}
 
 	void Retry(){
-		Application.LoadLevel ("Ready");
+		Application.LoadLevel ("debug");
 	}
 
 	void BackTitle(){
