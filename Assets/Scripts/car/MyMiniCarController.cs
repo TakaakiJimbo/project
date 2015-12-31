@@ -12,7 +12,7 @@ public class MyMiniCarController : MonoBehaviour {
 	
 	private IEnumerator loop() {
 		while (true) {
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(1.5f);
 			enableMiniCar();
 		}
 	}
