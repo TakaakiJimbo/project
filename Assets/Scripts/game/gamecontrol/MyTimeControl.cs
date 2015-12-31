@@ -55,7 +55,7 @@ public class MyTimeControl : MyGameControl {
 		}
 	}
 
-	private void enableReflectCount(bool flag) {
+	public void enableReflectCount(bool flag) {
 		foreach(MyCamera carcamera in carcameras) {
 			carcamera.enabledCount(flag);
 		}

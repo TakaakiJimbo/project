@@ -6,10 +6,12 @@ public class MyCarLifePoint : MyCar  {
 	[SerializeField] private int       lifepoint = 2;	//  if lifepoint  > 0, the car will be alive
 	[SerializeField] private AudioClip diedsound;
 	[SerializeField] private AudioClip diedsound2;
-	Texture2D blackTex;
+	GameObject TimeControl;
 
 	void Start() {
-	
+		TimeControl = GameObject.Find("GameControl");
+		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(false); 
+		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(false); 
 	}
 
 	void Update(){
@@ -55,10 +57,14 @@ public class MyCarLifePoint : MyCar  {
 			GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height),blackTex);
 			GUI.color = new Color(1,1,1,1);
 		*/
+
 		Invoke("Debugreturn",2);
 	}
-
 		private void Debugreturn(){
-		Application.LoadLevel("Debug");
+		MyTimeControl timeControl = TimeControl.GetComponent<MyTimeControl> ();
+		timeControl.enableReflectCount(false);
+		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(true); 
+		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(true); 
+		//Application.LoadLevel("Debug");
 	}
 }
