@@ -16,6 +16,7 @@ public class MyTimeControl : MyGameControl {
 	public GameObject PlayerCar;
 	public GameObject Enemy;
 	static public float interval; 	//Random.Range(randMin,randMax);
+	[SerializeField]  private  AudioClip countdown;
 
 
 	protected override void initialize() {
@@ -33,12 +34,13 @@ public class MyTimeControl : MyGameControl {
 		startTime = DateTime.Now;
 		enableReflectCount(false);
 		interval = firstInterval;
+		gameObject.GetComponent<AudioSource>().PlayOneShot(countdown);
 	}
 	
 	void Update () {
 		pastTime = DateTime.Now - startTime;
 		if(PlayerCar){
-		reflectCount(pastTime.Minutes, pastTime.Seconds, pastTime.Milliseconds);
+			reflectCount(pastTime.Minutes, pastTime.Seconds, pastTime.Milliseconds);
 		}
 		if(countdownflag) {
 			int time = limittime - pastTime.Seconds;

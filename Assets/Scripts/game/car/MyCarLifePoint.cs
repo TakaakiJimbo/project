@@ -5,10 +5,11 @@ public class MyCarLifePoint : MyCar  {
 
 	[SerializeField] private int       lifepoint = 2;	//  if lifepoint  > 0, the car will be alive
 	[SerializeField] private AudioClip diedsound;
-	GameObject FallSound;
+	[SerializeField] private AudioClip fallsound;
+
+	private bool isDead = false;
 
 	void Start() {
-		FallSound = GameObject.Find ("Fall");
 		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(false); 
 		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(false); 
 		if(PlayerPrefs.HasKey("Highscore")){
@@ -28,12 +29,10 @@ public class MyCarLifePoint : MyCar  {
 	public void changeLifePoint(int changepoint) {
 		if(!targetcamera.isResult()) {
 			lifepoint += changepoint;
-			if(!isAliveLifePoint()) {
-				lifepoint = 0;
-			//	gameObject.GetComponent<MyCarRank>().receiveRank(3, -1);	// finish mode, failed to goal
+			if(!isAliveLifePoint() && !isDead) {
+				isDead = true;
 				Invoke("diedAnimation", 1);
 			}
-			//reflectLifePoint();
 		}
 	}
 
@@ -46,29 +45,27 @@ public class MyCarLifePoint : MyCar  {
 	}
 	
 	private  void diedAnimation() {
+		AudioSource audiosource = gameObject.GetComponent<AudioSource> ();
 		gameObject.GetComponent<UnityStandardAssets.Vehicles.Car.MyCarUserControl>().enabled = false;
 		gameObject.GetComponent<Rigidbody>().isKinematic = true;
-		gameObject.GetComponent<Detonator>().Explode();
-		if (transform.position.y > -20) {
+		if (transform.position.y > 0) {
+			gameObject.GetComponent<Detonator>().Explode();
+			audiosource.PlayOneShot (diedsound);
 			iTween.ScaleTo (gameObject, iTween.Hash ("x", 0, "y  ", 0, "z", 0, "time", 0.0f));
-			AudioSource.PlayClipAtPoint (diedsound, gameObject.transform.position);
-		} else {
-			gameObject.SetActiveRecursively(false);
-			FallSound fall = FallSound.GetComponent<FallSound> ();
-			fall.fallsound ();
 		}
-			
+		else {
+			audiosource.PlayOneShot (fallsound);
+			Invoke("fallDestroy",2);
+		}
 		if (PlayerPrefs.GetInt("HighScore") < (int)transform.position.z) {
 			PlayerPrefs.SetInt ("HighScore", (int)transform.position.z);
 		}
-
-		Debug.Log (PlayerPrefs.GetInt("HighScore"));
 		targetcamera.showHighScore(PlayerPrefs.GetInt("HighScore"));
 		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(true); 
 		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(true); 
-		Invoke("countstop",3);
 	}
-		private void countstop(){
+
+	private void fallDestroy(){
 		Destroy(gameObject);
 	}
 }
