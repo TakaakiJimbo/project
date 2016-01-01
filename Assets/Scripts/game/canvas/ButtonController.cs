@@ -4,17 +4,20 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour {
 
-	private AudioSource sound;
+	[SerializeField] private AudioClip sound;
 
 	public void Retry() {
-		sound = GetComponent<AudioSource>();
-		sound.PlayOneShot(sound.clip);
-		Application.LoadLevel ("debug");
+		GetComponent<AudioSource>().PlayOneShot(sound);
+		StartCoroutine ("LoadScene", "debug");
 	}
 
 	public void BackTitle() {
-		sound = GetComponent<AudioSource>();
-		sound.PlayOneShot(sound.clip);
-		Application.LoadLevel ("main");
+		GetComponent<AudioSource>().PlayOneShot(sound);
+		StartCoroutine ("LoadScene", "main");
+	}
+		
+	private IEnumerator LoadScene(string scene) {
+		yield return new WaitForSeconds (0.5f);
+		Application.LoadLevelAsync(scene);
 	}
 }
