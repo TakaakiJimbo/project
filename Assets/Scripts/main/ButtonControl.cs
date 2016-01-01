@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MainButton : MonoBehaviour {
+public class ButtonControl : MonoBehaviour {
 
 	GameObject startButton;
 	GameObject howToPlayButton;
 	GameObject intro;
 	GameObject nowLoading;
+
+	[SerializeField] private AudioClip sound;
 
 	void Start() {
 		startButton     = transform.FindChild ("START").gameObject;
@@ -18,17 +20,24 @@ public class MainButton : MonoBehaviour {
 	}
 
 	public void clickStartButton () {
+		GetComponent<AudioSource>().PlayOneShot(sound);
 		startButton.SetActive (false);
 		howToPlayButton.SetActive (false);
 		nowLoading.SetActive (true);
-		Application.LoadLevelAsync("debug");
+		StartCoroutine ("LoadScene", "debug");
 	}
 
 	public void clickHowToPlayButton () {
+		GetComponent<AudioSource>().PlayOneShot(sound);
 		intro.SetActive (true);
 	}
 
 	public void clickIntro () {
 		intro.SetActive (false);
+	}
+
+	private IEnumerator LoadScene(string scene) {
+		yield return new WaitForSeconds (0.5f);
+		Application.LoadLevelAsync(scene);
 	}
 }
