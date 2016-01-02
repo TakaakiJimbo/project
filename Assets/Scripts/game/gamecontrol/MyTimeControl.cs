@@ -13,9 +13,9 @@ public class MyTimeControl : MyGameControl {
 	private List<MyCamera> carcameras    = new List<MyCamera> ();
 	private bool           countdownflag = true; 
 	private float firstInterval = 2.0f;
-	public GameObject PlayerCar;
-	public GameObject Enemy;
-	static public float interval; 	//Random.Range(randMin,randMax);
+	static public float interval; 
+	[SerializeField]  private GameObject PlayerCar;
+	[SerializeField]  private GameObject Enemy;
 	[SerializeField]  private  AudioClip countdown;
 
 
@@ -35,6 +35,7 @@ public class MyTimeControl : MyGameControl {
 		enableReflectCount(false);
 		interval = firstInterval;
 		gameObject.GetComponent<AudioSource>().PlayOneShot(countdown);
+
 	}
 	
 	void Update () {
@@ -51,6 +52,7 @@ public class MyTimeControl : MyGameControl {
 				countdownflag = false;
 				reflectCountDown(limittime - pastTime.Seconds);
 				timeStart();
+				GameObject.Find("Canvas").transform.FindChild("Stop").gameObject.SetActive(true); 
 				StartCoroutine("SpawnEnemy");
 				StartCoroutine("ProhibitStop");
 				removeCarKinematic();

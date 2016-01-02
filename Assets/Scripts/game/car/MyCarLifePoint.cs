@@ -9,16 +9,6 @@ public class MyCarLifePoint : MyCar  {
 
 	private bool isDead = false;
 
-	void Start() {
-		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(false); 
-		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(false); 
-		if(PlayerPrefs.HasKey("Highscore")){
-			PlayerPrefs.SetInt("HighScore", 0); 
-		}
-		Debug.Log (PlayerPrefs.GetInt("HighScore"));
-		targetcamera.showHighScore(PlayerPrefs.GetInt("HighScore"));
-	}
-
 	// not good
 	void Update(){
 		if(transform.position.y < -20 && !isDead){
@@ -59,10 +49,6 @@ public class MyCarLifePoint : MyCar  {
 			audiosource.PlayOneShot (diedsound);
 			iTween.ScaleTo (gameObject, iTween.Hash ("x", 0, "y  ", 0, "z", 0, "time", 0.0f));
 		}
-		if (PlayerPrefs.GetInt("HighScore") < (int)transform.position.z) {
-			PlayerPrefs.SetInt ("HighScore", (int)transform.position.z);
-		}
-		targetcamera.showHighScore(PlayerPrefs.GetInt("HighScore"));
 		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(true); 
 		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(true); 
 	}

@@ -16,7 +16,7 @@ public class MyCheckPoint : MonoBehaviour {
 			GameObject carobject     = other.transform.root.gameObject;
 			levelControl.levelup();
 			Vector3    carposition   = carobject.transform.position;		
-			gameObject.SetActiveRecursively(false);
+			gameObject.SetActive(false);
 		}
 	}
 }
