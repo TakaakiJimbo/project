@@ -35,12 +35,11 @@ public class MyTimeControl : MyGameControl {
 		enableReflectCount(false);
 		interval = firstInterval;
 		gameObject.GetComponent<AudioSource>().PlayOneShot(countdown);
-
 	}
 	
 	void Update () {
 		pastTime = DateTime.Now - startTime;
-		if(PlayerCar){
+		if(Time.timeScale !=0 && PlayerCar){
 			reflectCount(pastTime.Minutes, pastTime.Seconds, pastTime.Milliseconds);
 		}
 		if(countdownflag) {

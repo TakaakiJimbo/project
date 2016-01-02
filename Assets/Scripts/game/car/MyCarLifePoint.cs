@@ -9,8 +9,16 @@ public class MyCarLifePoint : MyCar  {
 
 	private bool isDead = false;
 
+	void Start () {
+		Debug.Log (PlayerPrefs.GetInt("HighScore",0));
+		targetcamera.showHighScore(PlayerPrefs.GetInt("HighScore",0));
+	}
+
 	// not good
 	void Update(){
+		if(transform.position.y < -1){
+			GameObject.Find("Canvas").transform.FindChild("Stop").gameObject.SetActive(false);
+		}
 		if(transform.position.y < -20 && !isDead){
 			changeLifePoint ((-1)*lifepoint);
 		}
@@ -22,6 +30,7 @@ public class MyCarLifePoint : MyCar  {
 			lifepoint += changepoint;
 			if(!isAliveLifePoint() && !isDead) {
 				isDead = true;
+				GameObject.Find("Canvas").transform.FindChild("Stop").gameObject.SetActive(false);
 				Invoke("diedAnimation", 1);
 			}
 		}
@@ -51,5 +60,12 @@ public class MyCarLifePoint : MyCar  {
 		}
 		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(true); 
 		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(true); 
+	}
+
+	public void checkScore(){
+		if (PlayerPrefs.GetInt("HighScore") < (int)transform.position.z) {
+			PlayerPrefs.SetInt ("HighScore", (int)transform.position.z);
+		}
+		targetcamera.showHighScore(PlayerPrefs.GetInt("HighScore"));
 	}
 }
