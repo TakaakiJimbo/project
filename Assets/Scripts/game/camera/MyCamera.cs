@@ -89,7 +89,7 @@ public class MyCamera : MonoBehaviour {
 
 	public void showNowScore(int nowScore) {
 		if (!isResult()) {
-			score.text = "SCORE:" + nowScore.ToString() + '\n'+ (Profiler.usedHeapSize / 1048576).ToString() + "/" + (SystemInfo.systemMemorySize).ToString() + " MB";
+			score.text = "SCORE:" + nowScore.ToString (); //+ '\n'+ (Profiler.usedHeapSize / 1048576).ToString() + "/" + (SystemInfo.systemMemorySize).ToString() + " MB";
 		}
 	}
 

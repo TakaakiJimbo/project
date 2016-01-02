@@ -6,12 +6,16 @@ public class MyCarLifePoint : MyCar  {
 	[SerializeField] private int       lifepoint = 2;	//  if lifepoint  > 0, the car will be alive
 	[SerializeField] private AudioClip diedsound;
 	[SerializeField] private AudioClip fallsound;
+	int[] scoreArray = new int[10];
 
 	private bool isDead = false;
 
 	void Start () {
-		Debug.Log (PlayerPrefs.GetInt("HighScore",0));
-		targetcamera.showHighScore(PlayerPrefs.GetInt("HighScore",0));
+		Debug.Log (PlayerPrefs.GetInt("Result1",0));
+		targetcamera.showHighScore(PlayerPrefs.GetInt("Result1",0));
+		for (int i = 0; i < 10; i++) {
+			scoreArray[i] = PlayerPrefs.GetInt("Result" + (i + 1), 0);
+		}
 	}
 
 	// not good
@@ -63,9 +67,24 @@ public class MyCarLifePoint : MyCar  {
 	}
 
 	public void checkScore(){
-		if (PlayerPrefs.GetInt("HighScore") < (int)transform.position.z) {
-			PlayerPrefs.SetInt ("HighScore", (int)transform.position.z);
+		int nowScore = (int)transform.position.z;
+		int tmp = 0;
+		for (int i = 0; i < 10; i++) {
+			if (scoreArray[i] < nowScore) {
+				if (i != 9) {
+					for (int j = 9; j > i; j--) {
+						scoreArray [j] = scoreArray [j - 1];
+					}
+				}
+				scoreArray[i] = (int)nowScore;
+				break;
+			}
 		}
-		targetcamera.showHighScore(PlayerPrefs.GetInt("HighScore"));
+		for(int i = 0; i < 10 ;i++){
+			PlayerPrefs.SetInt ("Result" + (i + 1), scoreArray[i]);
+			Debug.Log ("scoreArray[" +i + "]:" + scoreArray[i]);
+		}
+		targetcamera.showHighScore (PlayerPrefs.GetInt ("Result1"));
 	}
+
 }

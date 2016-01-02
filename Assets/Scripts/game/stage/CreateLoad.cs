@@ -24,7 +24,7 @@ public class  CreateLoad : MonoBehaviour {
 			border += 250;
 			Vector3 temp = new Vector3 (0,0,border);
 			Load2.transform.position = temp;
-			Checkpoint.SetActive(true);
+			Checkpoint.SetActiveRecursively(true);
 		}
 	}
 }
