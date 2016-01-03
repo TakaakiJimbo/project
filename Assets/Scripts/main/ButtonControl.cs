@@ -5,28 +5,30 @@ public class ButtonControl : MonoBehaviour {
 
 	GameObject startButton;
 	GameObject howToPlayButton;
+	GameObject rankingButton;
 	GameObject intro;
-	GameObject ranking;
+	GameObject rank;
 	GameObject nowLoading;
-	//GameObject rankingText;
 
 	[SerializeField] private AudioClip sound;
 
 	void Start() {
 		startButton     = transform.FindChild ("START").gameObject;
 		howToPlayButton = transform.FindChild ("HowToPlay").gameObject;
+		rankingButton   = transform.FindChild ("Ranking").gameObject;
 		intro           = transform.FindChild ("Intro").gameObject;
-		ranking		    = transform.FindChild ("Rank").gameObject;
+		rank            = transform.FindChild ("Rank").gameObject;
 		nowLoading      = transform.FindChild ("NowLoading").gameObject;
 		intro.SetActive (false);
 		nowLoading.SetActive (false);
-		ranking.SetActive (false);
+		rank.SetActive (false);
 	}
 
 	public void clickStartButton () {
 		GetComponent<AudioSource>().PlayOneShot(sound);
 		startButton.SetActive (false);
 		howToPlayButton.SetActive (false);
+		rankingButton.SetActive (false);
 		nowLoading.SetActive (true);
 		StartCoroutine ("LoadScene", "debug");
 	}
@@ -38,7 +40,7 @@ public class ButtonControl : MonoBehaviour {
 
 	public void clickRankingButton () {
 		GetComponent<AudioSource>().PlayOneShot(sound);
-		ranking.SetActive (true);
+		rank.SetActive (true);
 	}
 		
 	public void clickIntro () {
@@ -46,7 +48,7 @@ public class ButtonControl : MonoBehaviour {
 	}
 
 	public void clickRank () {
-		ranking.SetActive (false);
+		rank.SetActive (false);
 	}
 
 	private IEnumerator LoadScene(string scene) {
