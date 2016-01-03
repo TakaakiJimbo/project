@@ -5,7 +5,7 @@ using System.Collections;
 public class MyCamera : MonoBehaviour {
 
 	private Text timecounter;
-	private Text lifepoint;
+	//private Text lifepoint;
 	private Text level;
 	private Text score;
 	private Text highscore;
@@ -20,7 +20,7 @@ public class MyCamera : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		timecounter = gameObject.FindDeep("TimeCounter").gameObject.GetComponent<Text>(); 
-		lifepoint   = gameObject.FindDeep("LifePoint").gameObject.GetComponent<Text>();
+	//	lifepoint   = gameObject.FindDeep("LifePoint").gameObject.GetComponent<Text>();
 		level       = gameObject.FindDeep("Level").gameObject.GetComponent<Text>();
 		score   	= gameObject.FindDeep("Score").gameObject.GetComponent<Text>();
 		highscore   = gameObject.FindDeep("HighScore").gameObject.GetComponent<Text>();
@@ -82,7 +82,7 @@ public class MyCamera : MonoBehaviour {
 			level.text = "LEVEL:" + nowLevel.ToString();
 		}
 	}
-
+	/*
 	public void showLifePoint(int point) {
 		if (point > 0) {
 			lifepoint.text = new string ('♥', point);
@@ -91,7 +91,7 @@ public class MyCamera : MonoBehaviour {
 			lifepoint.text = "";
 		}
 	}
-	
+*/
 	public void showNowCount(int minutes, int seconds, int milliseconds) {
 		if (!isResult()) {
 			timecounter.text = minutes.ToString().PadLeft (2, '0') + ':' + seconds.ToString().PadLeft (2, '0') + ':' + milliseconds.ToString().PadLeft (3, '0');
