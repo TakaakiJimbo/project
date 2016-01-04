@@ -13,7 +13,7 @@ public class MyBomb : MyItem {
 
 	private void explodeCar(GameObject collidedobject) {
 		iTween.MoveTo(collidedobject, iTween.Hash("y", 20, "time", 1.5f));
-		iTween.RotateTo(collidedobject, iTween.Hash("x", 1440, "time", 5.5f));
+		iTween.RotateTo(collidedobject, iTween.Hash("x", 1440, "time", 1.5f));
 	}
 
 	protected override void setItemAppearedPosition (Transform cartransform) {

@@ -11,7 +11,7 @@ public class MyCarLifePoint : MyCar  {
 	private bool isDead = false;
 
 	void Start () {
-		//reflectLifePoint ();
+		reflectLifePoint ();
 		Debug.Log (PlayerPrefs.GetInt("Result1",0));
 		targetcamera.showHighScore(PlayerPrefs.GetInt("Result1",0));
 		for (int i = 0; i < 10; i++) {
@@ -33,7 +33,7 @@ public class MyCarLifePoint : MyCar  {
 	public void changeLifePoint(int changepoint) {
 		if(!targetcamera.isResult()) {
 			lifepoint += changepoint;
-		//	reflectLifePoint ();
+			reflectLifePoint ();
 			if(!isAliveLifePoint() && !isDead) {
 				isDead = true;
 				GameObject.Find("Canvas").transform.FindChild("Stop").gameObject.SetActive(false);
@@ -49,11 +49,11 @@ public class MyCarLifePoint : MyCar  {
 	public bool isAliveLifePoint() {
 		return lifepoint > 0;
 	}
-	/*
+
 	private void reflectLifePoint() {
 		targetcamera.showLifePoint(lifepoint);
 	}
-	*/
+
 	private  void diedAnimation() {
 		AudioSource audiosource = gameObject.GetComponent<AudioSource> ();
 		GameObject.Find ("GameControl").GetComponent<MyTimeControl> ().enabled = false;
