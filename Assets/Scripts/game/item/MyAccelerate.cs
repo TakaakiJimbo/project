@@ -8,10 +8,11 @@ public class MyAccelerate : MyItem {
 	}
 		
 	protected override void collidedItemAction(GameObject collidedobject) {
+		accelerateCar(collidedobject);
 	}
 		
 	private void accelerateCar(GameObject collidedobject) {
-		//collidedobject.GetComponent<Rigidbody>.velocity = new Vector3(0, 0, 1000);
+		collidedobject.GetComponent<Rigidbody>().AddForce(new Vector3(0,0,20f), ForceMode.VelocityChange);
 	}
 		
 	protected override void setItemAppearedPosition (Transform cartransform) {

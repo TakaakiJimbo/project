@@ -12,7 +12,7 @@ public class MyInvinsible : MyItem {
 		StartCoroutine ("invisibleCar", collidedobject);
 	}
 		
-	IEnumerator invisibleCar(GameObject collidedobject) {
+	private IEnumerator invisibleCar(GameObject collidedobject) {
 		yield return new WaitForSeconds(1f);
 		collidedobject.layer = 8;
 	}

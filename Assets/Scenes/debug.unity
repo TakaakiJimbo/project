@@ -381,12 +381,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 45809041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 10}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 10, y: 1, z: 30}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 272638903}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &55866450
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +860,7 @@ Transform:
   m_GameObject: {fileID: 272638902}
   m_LocalRotation: {x: 0.000000030908623, y: 0.7071068, z: 0.7071068, w: -0.000000030908623}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 45809049}
   m_RootOrder: 0
@@ -1389,6 +1389,9 @@ MonoBehaviour:
   targetcamera: {fileID: 1782108443}
   firstlevel: 1
   checkedsound: {fileID: 8300000, guid: f58ff1b741d704d30aaaa6e981b358a1, type: 3}
+  Heal: {fileID: 45809041}
+  Invinsible: {fileID: 966153102}
+  Accelerate: {fileID: 1802213271}
 --- !u!114 &461945424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2116,7 +2119,7 @@ Transform:
   m_GameObject: {fileID: 621248756}
   m_LocalRotation: {x: 0.000000030908623, y: 0.7071068, z: 0.7071068, w: -0.000000030908623}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5555555, y: 0.5555555, z: 0.5555555}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1802213279}
   m_RootOrder: 0
@@ -2259,7 +2262,7 @@ Transform:
   m_GameObject: {fileID: 664337462}
   m_LocalRotation: {x: 0.000000030908623, y: 0.7071068, z: 0.7071068, w: -0.000000030908623}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.30000004, z: 0.32000002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 966153111}
   m_RootOrder: 0
@@ -2845,7 +2848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagecarvalue: 0
   setitemsound: {fileID: 0}
-  hititemsound: {fileID: 8300000, guid: f58ff1b741d704d30aaaa6e981b358a1, type: 3}
+  hititemsound: {fileID: 0}
 --- !u!136 &966153104
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3031,12 +3034,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 966153102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 20}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 1, z: 30}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 664337463}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!1001 &1035044196
 Prefab:
   m_ObjectHideFlags: 0
@@ -4563,12 +4566,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1802213271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 10}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: -10, y: 1, z: 30}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 621248757}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1831851907
 GameObject:
   m_ObjectHideFlags: 0

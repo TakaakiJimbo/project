@@ -381,7 +381,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 45809041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 10}
+  m_LocalPosition: {x: -10, y: 1, z: 10}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 272638903}
@@ -1836,6 +1836,9 @@ MonoBehaviour:
   targetcamera: {fileID: 1782108443}
   firstlevel: 1
   checkedsound: {fileID: 8300000, guid: f58ff1b741d704d30aaaa6e981b358a1, type: 3}
+  Heal: {fileID: 45809041}
+  Invinsible: {fileID: 966153102}
+  Accelerate: {fileID: 1802213271}
 --- !u!114 &461945424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4144,7 +4147,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 966153102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 20}
+  m_LocalPosition: {x: 10, y: 1, z: 20}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 664337463}

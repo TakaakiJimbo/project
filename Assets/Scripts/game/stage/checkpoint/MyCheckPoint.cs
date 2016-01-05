@@ -13,9 +13,7 @@ public class MyCheckPoint : MonoBehaviour {
 	// layer 8 is "Car"
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.layer == 8) {
-			GameObject carobject     = other.transform.root.gameObject;
 			levelControl.levelup();
-			Vector3    carposition   = carobject.transform.position;		
 			gameObject.SetActiveRecursively(false);
 		}
 	}
