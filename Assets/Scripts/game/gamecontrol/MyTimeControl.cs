@@ -53,7 +53,7 @@ public class MyTimeControl : MyGameControl {
 				timeStart();
 				GameObject.Find("Canvas").transform.FindChild("Stop").gameObject.SetActive(true); 
 				StartCoroutine("SpawnEnemy");
-				StartCoroutine("ProhibitStop");
+				//StartCoroutine("ProhibitStop");
 				removeCarKinematic();
 				StartCoroutine(enableReflectCountDown(1, false));
 			}
@@ -115,23 +115,24 @@ public class MyTimeControl : MyGameControl {
 			SpawnStop();
 	}
 
-	IEnumerator ProhibitStop(){
-		while (true) {
-			yield return new WaitForSeconds (interval * 5.0f);
-			GameObject obj = (GameObject)Instantiate (Enemy, new Vector3 (PlayerCar.transform.position.x, 7.0f, 
-		                                 PlayerCar.transform.position.z + 1f), Quaternion.identity);
-			obj.transform.parent = transform;
-			Destroy(obj,5 * interval);
-			Resources.UnloadUnusedAssets();
-		}
-	}
-	
 	public void SpawnStop () {
 		StopCoroutine("SpawnEnemy");
-		StopCoroutine("ProhibitStop");
 	}
 	
 	static public void ShortInterval () {
 		interval = interval * 0.9f;
+	}
+
+	public void getItem(){
+		Invoke ("endEnable",1f );
+	}
+
+	public void invisibleItem(){
+		Invoke ("endEnable",10f );
+	}
+
+	private void endEnable(){
+		MyItem.itemFlag = true;
+		Debug.Log ("end");
 	}
 }

@@ -74,7 +74,6 @@ public class MyCarLifePoint : MyCar  {
 
 	public void checkScore(){
 		int nowScore = (int)transform.position.z;
-		int tmp = 0;
 		for (int i = 0; i < 10; i++) {
 			if (scoreArray[i] < nowScore) {
 				if (i != 9) {

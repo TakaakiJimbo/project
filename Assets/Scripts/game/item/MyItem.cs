@@ -7,9 +7,15 @@ public abstract class MyItem : MonoBehaviour {
 	[SerializeField] private int       damagecarvalue = 0;
 	[SerializeField] private AudioClip setitemsound;
 	[SerializeField] private AudioClip hititemsound;
-
+	static public bool itemFlag = true;
+	public MyTimeControl timecontrol;
 	protected abstract void collidedItemAction (GameObject collidedobject);
 	protected abstract void setItemAppearedPosition (Transform cartransform); 
+
+
+	void Start() {
+		timecontrol = GameObject.Find ("GameControl").GetComponent<MyTimeControl> ();
+	}
 
 	void OnEnable() {
 		GetComponent<AudioSource>().PlayOneShot(setitemsound);
@@ -17,15 +23,17 @@ public abstract class MyItem : MonoBehaviour {
 
 	// layer 8 is "Car"
 	void OnCollisionEnter(Collision other) {
-		if (other.gameObject.layer == 8) {
+		if (other.gameObject.layer == 8 ) {
 			GameObject carobject = other.transform.root.gameObject;
-			AudioSource.PlayClipAtPoint(hititemsound, carobject.transform.position);
-			collidedItemAction(carobject);
-			damageCarByItem(carobject.GetComponent<MyCarLifePoint> ());
+			AudioSource.PlayClipAtPoint (hititemsound, carobject.transform.position);
+			if (itemFlag) {
+				collidedItemAction (carobject);
+				damageCarByItem (carobject.GetComponent<MyCarLifePoint> ());
+			}
 			destroyItem(gameObject);
 		}
 	}
-	
+
 	protected void damageCarByItem(MyCarLifePoint carlifepoint) {
 		carlifepoint.changeLifePoint(damagecarvalue);
 	}

@@ -8,13 +8,9 @@ public class MyInvinsible : MyItem {
 	}
 
 	protected override void collidedItemAction(GameObject collidedobject) {
-		collidedobject.layer = 10;
-		StartCoroutine ("invisibleCar", collidedobject);
-	}
-		
-	private IEnumerator invisibleCar(GameObject collidedobject) {
-		yield return new WaitForSeconds(1f);
-		collidedobject.layer = 8;
+		itemFlag = false;
+		Debug.Log ("start");
+		timecontrol.invisibleItem();
 	}
 
 	protected override void setItemAppearedPosition (Transform cartransform) {

@@ -8,6 +8,9 @@ public class MyAccelerate : MyItem {
 	}
 		
 	protected override void collidedItemAction(GameObject collidedobject) {
+		itemFlag = false;
+		Debug.Log ("start");
+		timecontrol.getItem();
 		accelerateCar(collidedobject);
 	}
 		

@@ -8,6 +8,9 @@ public class MyNurse : MyItem {
 	}
 		
 	protected override void collidedItemAction(GameObject collidedobject) {
+		itemFlag = false;
+		Debug.Log ("start");
+		timecontrol.getItem();
 	}
 
 	protected override void setItemAppearedPosition (Transform cartransform) {

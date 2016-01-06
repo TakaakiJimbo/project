@@ -18,6 +18,7 @@ public class MyLevelControl : MonoBehaviour {
 		audioSource.clip =  checkedsound;
 		//debug only
 		level = firstlevel;
+		itemGenerate (1);
 		if(firstlevel > 1){
 			for(int i = 1; i <= firstlevel; i++){
 				MyTimeControl.ShortInterval();
@@ -38,6 +39,9 @@ public class MyLevelControl : MonoBehaviour {
 
 	void itemGenerate(int level){
 		int itemposition = level * 500 - 500;
+		if(level == 1){
+			itemposition = 20;
+		}
 		GameObject obj = (GameObject)Instantiate(Heal, new Vector3 (15f, 1f, itemposition),Quaternion.identity);
 		GameObject obj2 = (GameObject)Instantiate(Accelerate, new Vector3 (0f, 1f, itemposition),Quaternion.identity);
 		GameObject obj3 = (GameObject)Instantiate(Invinsible, new Vector3 (-15f, 1f, itemposition),Quaternion.identity);

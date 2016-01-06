@@ -4,6 +4,9 @@ using System.Collections;
 public class MyBomb : MyItem {
 	
 	protected override void collidedItemAction(GameObject collidedobject) {
+		itemFlag = false;
+		Debug.Log ("start");
+		timecontrol.getItem();
 		explodeCar(collidedobject);
 	}
 	

@@ -10,9 +10,9 @@ public class MyCheckPoint : MonoBehaviour {
 		levelControl = GameObject.Find ("GameControl").GetComponent<MyLevelControl> ();
 	}
 
-	// layer 8 is "Car"
+	// layer 10 is "Cartriger"
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.layer == 8) {
+		if (other.gameObject.layer == 10) {
 			levelControl.levelup();
 			gameObject.SetActiveRecursively(false);
 		}
