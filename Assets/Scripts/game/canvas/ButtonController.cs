@@ -17,7 +17,7 @@ public class ButtonController : MonoBehaviour {
 	public void Retry() {
 		GetComponent<AudioSource>().PlayOneShot(sound);
 		Time.timeScale = 1f;
-		StartCoroutine ("LoadScene", "debug");
+		StartCoroutine ("LoadScene", "noukin");
 	}
 
 	public void BackTitle() {

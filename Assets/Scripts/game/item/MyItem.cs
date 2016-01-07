@@ -5,7 +5,6 @@ using System.Collections;
 public abstract class MyItem : MonoBehaviour {
 
 	[SerializeField] private int       damagecarvalue = 0;
-	[SerializeField] private AudioClip setitemsound;
 	[SerializeField] private AudioClip hititemsound;
 	static public bool itemFlag = true;
 	public MyTimeControl timecontrol;
@@ -15,10 +14,6 @@ public abstract class MyItem : MonoBehaviour {
 
 	void Start() {
 		timecontrol = GameObject.Find ("GameControl").GetComponent<MyTimeControl> ();
-	}
-
-	void OnEnable() {
-		GetComponent<AudioSource>().PlayOneShot(setitemsound);
 	}
 
 	// layer 8 is "Car"

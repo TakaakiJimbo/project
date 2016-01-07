@@ -30,7 +30,7 @@ public class ButtonControl : MonoBehaviour {
 		howToPlayButton.SetActive (false);
 		rankingButton.SetActive (false);
 		nowLoading.SetActive (true);
-		StartCoroutine ("LoadScene", "debug");
+		StartCoroutine ("LoadScene", "noukin");
 	}
 
 	public void clickHowToPlayButton () {

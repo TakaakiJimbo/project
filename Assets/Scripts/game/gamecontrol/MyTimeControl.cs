@@ -16,8 +16,9 @@ public class MyTimeControl : MyGameControl {
 	static public float interval; 
 	[SerializeField]  private GameObject PlayerCar;
 	[SerializeField]  private GameObject Enemy;
+	[SerializeField]  private GameObject Barieer;
 	[SerializeField]  private  AudioClip countdown;
-
+	[SerializeField]  private  AudioClip endinvisible;
 
 	protected override void initialize() {
 		carplayerobjects = GameObject.FindGameObjectsWithTag ("Player");
@@ -120,19 +121,25 @@ public class MyTimeControl : MyGameControl {
 	}
 	
 	static public void ShortInterval () {
-		interval = interval * 0.9f;
+		interval = interval * 0.8f;
 	}
 
 	public void getItem(){
-		Invoke ("endEnable",1f );
+		Invoke ("endEnable",2f );
 	}
 
 	public void invisibleItem(){
-		Invoke ("endEnable",10f );
+		Barieer.SetActiveRecursively(true);
+		Invoke ("endInvisible",15f );
 	}
 
 	private void endEnable(){
 		MyItem.itemFlag = true;
-		Debug.Log ("end");
+	}
+
+	private void endInvisible(){
+		MyItem.itemFlag = true;
+		gameObject.GetComponent<AudioSource>().PlayOneShot(endinvisible);
+		Barieer.SetActiveRecursively(false);
 	}
 }

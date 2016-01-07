@@ -26,10 +26,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 416940}
   - 54: {fileID: 5429500}
-  - 82: {fileID: 8215308}
   - 82: {fileID: 8257430}
   - 114: {fileID: 11412166}
-  - 114: {fileID: 11490264}
   - 136: {fileID: 13625406}
   - 114: {fileID: 11409992}
   m_Layer: 11
@@ -112,80 +110,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!82 &8215308
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187712}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 51ee511a3fe3b49b5993d461697bfc54, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.25
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!82 &8257430
 AudioSource:
   m_ObjectHideFlags: 1
@@ -195,7 +119,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2565fae86708640cc919ce109f3f463e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7784a730d2bb04107a6d3e8e08e94f84, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -204,7 +128,7 @@ AudioSource:
   Spatialize: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 495.0495
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -272,8 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagecarvalue: 1
-  setitemsound: {fileID: 0}
-  hititemsound: {fileID: 8300000, guid: f58ff1b741d704d30aaaa6e981b358a1, type: 3}
+  hititemsound: {fileID: 8300000, guid: 7784a730d2bb04107a6d3e8e08e94f84, type: 3}
   timecontrol: {fileID: 0}
 --- !u!114 &11412166
 MonoBehaviour:
@@ -281,7 +204,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187712}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b4007f1233a9b74fa9be42583fafba6, type: 3}
   m_Name: 
@@ -311,41 +234,6 @@ MonoBehaviour:
   autoCreateLight: 1
   autoCreateForce: 1
   autoCreateHeatwave: 0
---- !u!114 &11490264
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 034345331e52f2b4e873add1691384e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  on: 1
-  detonatorControlled: 1
-  startSize: 1
-  size: 1
-  explodeDelayMin: 0
-  explodeDelayMax: 0
-  startDuration: 2
-  duration: 1
-  timeScale: 1
-  startDetail: 1
-  detail: 1
-  startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-  startLocalPosition: {x: 0, y: 0, z: 0}
-  localPosition: {x: 0, y: 0, z: 0}
-  startForce: {x: 0, y: 0, z: 0}
-  force: {x: 0, y: 0, z: 0}
-  startVelocity: {x: 0, y: 0, z: 0}
-  velocity: {x: 3, y: 3, z: 3}
-  detailThreshold: 0
-  smokeAMaterial: {fileID: 0}
-  smokeBMaterial: {fileID: 0}
-  drawSmokeA: 1
-  drawSmokeB: 1
 --- !u!136 &13625406
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -369,6 +257,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hititemsound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7784a730d2bb04107a6d3e8e08e94f84, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7784a730d2bb04107a6d3e8e08e94f84, type: 3}
+    - target: {fileID: 0}
+      propertyPath: MinDistance
+      value: 495.0495
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

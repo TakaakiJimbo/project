@@ -1341,6 +1341,7 @@ GameObject:
   - 114: {fileID: 461945425}
   - 82: {fileID: 461945422}
   - 82: {fileID: 461945421}
+  - 82: {fileID: 461945427}
   m_Layer: 0
   m_Name: GameControl
   m_TagString: Untagged
@@ -1528,7 +1529,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCar: {fileID: 1980837972}
   Enemy: {fileID: 169108, guid: 617ebb5e8515746ccbdf6e1ddf395a83, type: 2}
+  Barieer: {fileID: 1274257472}
   countdown: {fileID: 8300000, guid: 600b08d8b6a5e46a8a72a44750fbe875, type: 3}
+  endinvisible: {fileID: 8300000, guid: d77cf056e44df480da0cd638a248329d, type: 3}
 --- !u!114 &461945425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1559,6 +1562,80 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!82 &461945427
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 461945420}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d77cf056e44df480da0cd638a248329d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 495.0495
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!4 &465358214 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 13bfedd0df09743319177800169a4d02, type: 3}
@@ -1636,7 +1713,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -460, y: 400}
+  m_AnchoredPosition: {x: -460, y: 380}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &468436628
@@ -3830,8 +3907,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1090309495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 2, z: 0.01}
+  m_LocalPosition: {x: 0, y: 7.5, z: 0}
+  m_LocalScale: {x: 30, y: 20, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1327115457}
   m_RootOrder: 0
@@ -5740,6 +5817,81 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.19999981, y: 0.19999987, z: 1.4000001}
   m_Center: {x: -1.5000002, y: 0.30000013, z: 0.100000024}
+--- !u!1 &1274257472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1274257473}
+  - 33: {fileID: 1274257476}
+  - 65: {fileID: 1274257475}
+  - 23: {fileID: 1274257474}
+  m_Layer: 0
+  m_Name: Barieer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1274257473
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1274257472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 3, y: 2.5, z: 6}
+  m_Children: []
+  m_Father: {fileID: 1980837982}
+  m_RootOrder: 5
+--- !u!23 &1274257474
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1274257472}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c84b04a06492a42baad616ef04866383, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &1274257475
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1274257472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1274257476
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1274257472}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1284973914
 GameObject:
   m_ObjectHideFlags: 0
@@ -6552,7 +6704,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1480434252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1327115457}
@@ -6572,7 +6724,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 200
+  m_FontSize: 400
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 701a88ab679004e9eb476af269ac1abf, type: 3}
@@ -8707,6 +8859,7 @@ Transform:
   - {fileID: 1837965208}
   - {fileID: 2145743555}
   - {fileID: 207364082}
+  - {fileID: 1274257473}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &1984218272 stripped

@@ -32,22 +32,26 @@ public class MyLevelControl : MonoBehaviour {
 		audioSource.Play();
 		MyTimeControl.ShortInterval();
 		targetcamera.showNowLevel(level);
-		if(level % 1 == 0){
+		if((level - 1)  % 3 == 0){
 			itemGenerate(level);
 		}
 	}
 
 	void itemGenerate(int level){
-		int itemposition = level * 500 - 500;
+		float position;
+
+
+		int itemposition = level * 500 - 600;
 		if(level == 1){
-			itemposition = 20;
+			itemposition = 100;
 		}
-		GameObject obj = (GameObject)Instantiate(Heal, new Vector3 (15f, 1f, itemposition),Quaternion.identity);
-		GameObject obj2 = (GameObject)Instantiate(Accelerate, new Vector3 (0f, 1f, itemposition),Quaternion.identity);
-		GameObject obj3 = (GameObject)Instantiate(Invinsible, new Vector3 (-15f, 1f, itemposition),Quaternion.identity);
-		Destroy(obj , 10);
-		Destroy(obj2, 10);
-		Destroy(obj3 , 10);
+
+		GameObject obj = (GameObject)Instantiate(Heal, new Vector3 (UnityEngine.Random.Range (-18f, -6f), 1f, itemposition),Quaternion.identity);
+		GameObject obj2 = (GameObject)Instantiate(Accelerate, new Vector3 (UnityEngine.Random.Range (-6f, 6f), 1f, itemposition),Quaternion.identity);
+		GameObject obj3 = (GameObject)Instantiate(Invinsible, new Vector3 (UnityEngine.Random.Range (6f, 18f), 1f, itemposition),Quaternion.identity);
+		Destroy(obj , 15);
+		Destroy(obj2, 15);
+		Destroy(obj3 , 15);
 		Resources.UnloadUnusedAssets();
 	}
 
