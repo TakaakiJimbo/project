@@ -46,9 +46,9 @@ public class MyLevelControl : MonoBehaviour {
 			itemposition = 100;
 		}
 
-		GameObject obj = (GameObject)Instantiate(Heal, new Vector3 (UnityEngine.Random.Range (-18f, -6f), 1f, itemposition),Quaternion.identity);
-		GameObject obj2 = (GameObject)Instantiate(Accelerate, new Vector3 (UnityEngine.Random.Range (-6f, 6f), 1f, itemposition),Quaternion.identity);
-		GameObject obj3 = (GameObject)Instantiate(Invinsible, new Vector3 (UnityEngine.Random.Range (6f, 18f), 1f, itemposition),Quaternion.identity);
+		GameObject obj = (GameObject)Instantiate(Heal, new Vector3 (UnityEngine.Random.Range (-18f, 18f), 1f, UnityEngine.Random.Range (-5f, 5f) + itemposition),Quaternion.identity);
+		GameObject obj2 = (GameObject)Instantiate(Accelerate, new Vector3 (UnityEngine.Random.Range (-10f, 10f), 1f, UnityEngine.Random.Range (-5f, 5f) + itemposition),Quaternion.identity);
+		GameObject obj3 = (GameObject)Instantiate(Invinsible, new Vector3 (UnityEngine.Random.Range (-18f, 18f), 1f, UnityEngine.Random.Range (-5f, 5f) + itemposition),Quaternion.identity);
 		Destroy(obj , 15);
 		Destroy(obj2, 15);
 		Destroy(obj3 , 15);

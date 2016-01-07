@@ -2295,7 +2295,7 @@ MeshRenderer:
   m_GameObject: {fileID: 591773486}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 6ec8e665218c14f86bf2ca2560b3f921, type: 2}
   m_SubsetIndices: 
@@ -5842,7 +5842,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1274257472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0.5, z: 0}
   m_LocalScale: {x: 3, y: 2.5, z: 6}
   m_Children: []
   m_Father: {fileID: 1980837982}
@@ -6948,6 +6948,10 @@ Prefab:
     - target: {fileID: 448544, guid: eebc58fb6c3bb499597ff3e57b25d300, type: 2}
       propertyPath: m_LocalScale.x
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350946, guid: eebc58fb6c3bb499597ff3e57b25d300, type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eebc58fb6c3bb499597ff3e57b25d300, type: 2}
