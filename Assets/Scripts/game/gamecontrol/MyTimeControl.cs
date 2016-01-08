@@ -121,7 +121,7 @@ public class MyTimeControl : MyGameControl {
 	}
 	
 	static public void ShortInterval () {
-		interval = interval * 0.8f;
+		interval = interval * 0.9f;
 	}
 
 	public void getItem(){
