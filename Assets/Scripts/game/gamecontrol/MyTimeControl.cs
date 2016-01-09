@@ -12,7 +12,7 @@ public class MyTimeControl : MyGameControl {
 	private DateTime       startTime;
 	private List<MyCamera> carcameras    = new List<MyCamera> ();
 	private bool           countdownflag = true; 
-	private float firstInterval = 2.0f;
+	private float firstInterval = 1.0f;
 	static public float interval; 
 	[SerializeField]  private GameObject PlayerCar;
 	[SerializeField]  private GameObject Enemy;
@@ -121,11 +121,11 @@ public class MyTimeControl : MyGameControl {
 	}
 	
 	static public void ShortInterval () {
-		interval = interval * 0.8f;
+		interval = interval * 0.9f;
 	}
 
 	public void getItem(){
-		Invoke ("endEnable",2f );
+		Invoke ("endEnable",0.5f );
 	}
 
 	public void invisibleItem(){
