@@ -99,16 +99,25 @@ public class MyTimeControl : MyGameControl {
 	
 	IEnumerator SpawnEnemy() {
 		while (true) {
-			 GameObject obj = (GameObject)Instantiate(Enemy, new Vector3 (UnityEngine.Random.Range (-20f, 20f), 3.5f, 
-			                                 UnityEngine.Random.Range (PlayerCar.transform.position.z + 40f, PlayerCar.transform.position.z + 50f))
-			             					 ,Quaternion.identity);
-			obj.transform.parent = transform;
-			 if(MyLevelControl.level < 3){
+			if(MyLevelControl.level < 3){
+				GameObject obj = (GameObject)Instantiate(Enemy, new Vector3 (UnityEngine.Random.Range (-20f, 20f), 3.5f, 
+					UnityEngine.Random.Range (PlayerCar.transform.position.z + 40f, PlayerCar.transform.position.z + 50f))
+					,Quaternion.identity);
+				obj.transform.parent = transform;
 				Destroy(obj , 10);
 			}else{
-				Destroy(obj , 5);
+				int count = MyLevelControl.level-2;
+				while (count >= 0) {
+					GameObject obj = (GameObject)Instantiate(Enemy, new Vector3 (UnityEngine.Random.Range (-20f, 20f), 3.5f, 
+						UnityEngine.Random.Range (PlayerCar.transform.position.z + 40f, PlayerCar.transform.position.z + 50f))
+						,Quaternion.identity);
+					obj.transform.parent = transform;
+					Destroy(obj , 5);
+					count--;
+				}
 			}
-				Resources.UnloadUnusedAssets();
+
+			Resources.UnloadUnusedAssets();
 			yield return new WaitForSeconds (interval);
 			if (PlayerCar == null)
 				break;
