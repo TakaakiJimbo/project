@@ -99,13 +99,13 @@ public class MyTimeControl : MyGameControl {
 	
 	IEnumerator SpawnEnemy() {
 		while (true) {
-			int count = MyLevelControl.level + 1;
+			int count = MyLevelControl.level;
 			while (count >= 0) {
 				GameObject obj = (GameObject)Instantiate(Enemy, new Vector3 (UnityEngine.Random.Range (-20f, 20f), 3.5f, 
 					UnityEngine.Random.Range (PlayerCar.transform.position.z + 40f, PlayerCar.transform.position.z + 50f))
 					,Quaternion.identity);
 				obj.transform.parent = transform;
-				Destroy(obj , 5);
+				Destroy(obj , 7);
 				count--;
 			}
 			Resources.UnloadUnusedAssets();
