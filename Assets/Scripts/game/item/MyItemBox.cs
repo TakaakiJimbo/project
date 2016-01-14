@@ -6,12 +6,13 @@ using System.Reflection;
 
 public class MyItemBox : MyItem {
 
-	private List<string> itemlist = new List<string> ();
+	private List<string> itemlist = new List<string>();
 
-	protected override void setItemAppearedPosition(Transform cartransform) {}
+	protected override void setItemAppearedPosition(Transform cartransform) {
+	}
 
 	void Awake() {
-		setItemList ();
+		setItemList();
 	}
 
 	void FixedUpdate() {
@@ -19,11 +20,11 @@ public class MyItemBox : MyItem {
 	}
 
 	protected override void collidedItemAction(GameObject collidedobject) {
-		Destroy (this);
+		Destroy(this);
 	}
 
 	private string cutStringCalledMy(Type type) {
-		return (type.Name.Substring (2)).ToLower();
+		return (type.Name.Substring(2)).ToLower();
 	}
 
 	private bool isItemboxType(Type type) {
@@ -32,9 +33,9 @@ public class MyItemBox : MyItem {
 
 	private void setItemList() {
 		Type targetType = typeof(MyItem);
-		foreach (Type type in Assembly.GetExecutingAssembly().GetTypes()) {
-			for (Type baseType = type.BaseType; baseType != null; baseType = baseType.BaseType) {
-				if (baseType == targetType && !isItemboxType(type)) {
+		foreach(Type type in Assembly.GetExecutingAssembly().GetTypes()) {
+			for(Type baseType = type.BaseType;baseType != null;baseType = baseType.BaseType) {
+				if(baseType == targetType && !isItemboxType(type)) {
 					itemlist.Add(cutStringCalledMy(type));
 					break;
 				}

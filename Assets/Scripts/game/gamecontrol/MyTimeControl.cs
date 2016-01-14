@@ -5,15 +5,15 @@ using System.Collections.Generic;
 
 public class MyTimeControl : MyGameControl {
 
-	private GameObject[]   carplayerobjects;
-	private GameObject[]   cameraobjects;
-	private int            limittime     = 3;
-	private TimeSpan       pastTime;
-	private DateTime       startTime;
-	private List<MyCamera> carcameras    = new List<MyCamera> ();
-	private bool           countdownflag = true; 
+	private GameObject[] carplayerobjects;
+	private GameObject[] cameraobjects;
+	private int limittime = 3;
+	private TimeSpan pastTime;
+	private DateTime startTime;
+	private List<MyCamera> carcameras = new List<MyCamera>();
+	private bool countdownflag = true;
 	private float firstInterval = 2.0f;
-	static public float interval; 
+	static public float interval;
 	[SerializeField]  private GameObject PlayerCar;
 	[SerializeField]  private GameObject Enemy;
 	[SerializeField]  private GameObject Barieer;
@@ -21,8 +21,8 @@ public class MyTimeControl : MyGameControl {
 	[SerializeField]  private  AudioClip endinvisible;
 
 	protected override void initialize() {
-		carplayerobjects = GameObject.FindGameObjectsWithTag ("Player");
-		cameraobjects    = GameObject.FindGameObjectsWithTag ("Camera");
+		carplayerobjects = GameObject.FindGameObjectsWithTag("Player");
+		cameraobjects = GameObject.FindGameObjectsWithTag("Camera");
 		foreach(GameObject cameraobject in cameraobjects) {
 			carcameras.Add(cameraobject.GetComponent<MyCamera>());
 		}
@@ -31,16 +31,16 @@ public class MyTimeControl : MyGameControl {
 		}
 	}
 
-	void Start () {
+	void Start() {
 		startTime = DateTime.Now;
 		enableReflectCount(false);
 		interval = firstInterval;
 		gameObject.GetComponent<AudioSource>().PlayOneShot(countdown);
 	}
-	
-	void Update () {
+
+	void Update() {
 		pastTime = DateTime.Now - startTime;
-		if(Time.timeScale !=0 && PlayerCar){
+		if(Time.timeScale != 0 && PlayerCar) {
 			reflectCount(pastTime.Minutes, pastTime.Seconds, pastTime.Milliseconds);
 		}
 		if(countdownflag) {
@@ -49,15 +49,15 @@ public class MyTimeControl : MyGameControl {
 				reflectCountDown(limittime - pastTime.Seconds);
 			}
 			else if(time == 0) {
-				countdownflag = false;
-				reflectCountDown(limittime - pastTime.Seconds);
-				timeStart();
-				GameObject.Find("Canvas").transform.FindChild("Stop").gameObject.SetActive(true); 
-				StartCoroutine("SpawnEnemy");
-				//StartCoroutine("ProhibitStop");
-				removeCarKinematic();
-				StartCoroutine(enableReflectCountDown(1, false));
-			}
+					countdownflag = false;
+					reflectCountDown(limittime - pastTime.Seconds);
+					timeStart();
+					GameObject.Find("Canvas").transform.FindChild("Stop").gameObject.SetActive(true); 
+					StartCoroutine("SpawnEnemy");
+					//StartCoroutine("ProhibitStop");
+					removeCarKinematic();
+					StartCoroutine(enableReflectCountDown(1, false));
+				}
 		}
 	}
 
@@ -82,10 +82,10 @@ public class MyTimeControl : MyGameControl {
 
 	private void reflectCount(int minutes, int seconds, int milliseconds) {
 		foreach(MyCamera carcamera in carcameras) {
-		carcamera.showNowCount(minutes, seconds, milliseconds);
+			carcamera.showNowCount(minutes, seconds, milliseconds);
 		}
 	}
-	
+
 	private void removeCarKinematic() {
 		foreach(GameObject carobject in carplayerobjects) {
 			carobject.GetComponent<UnityStandardAssets.Vehicles.Car.MyCarUserControl>().enabled = true;
@@ -96,48 +96,47 @@ public class MyTimeControl : MyGameControl {
 		enableReflectCount(true);
 		startTime = DateTime.Now;
 	}
-	
+
 	IEnumerator SpawnEnemy() {
-		while (true) {
+		while(true) {
 			int count = MyLevelControl.level;
-			while (count >= 0) {
-				GameObject obj = (GameObject)Instantiate(Enemy, new Vector3 (UnityEngine.Random.Range (-20f, 20f), 3.5f, 
-					UnityEngine.Random.Range (PlayerCar.transform.position.z + 40f, PlayerCar.transform.position.z + 50f))
-					,Quaternion.identity);
+			while(count >= 0) {
+				GameObject obj = (GameObject)Instantiate(Enemy, new Vector3(UnityEngine.Random.Range(-20f, 20f), 3.5f, UnityEngine.Random.Range(PlayerCar.transform.position.z + 40f, PlayerCar.transform.position.z + 50f))
+					, Quaternion.identity);
 				obj.transform.parent = transform;
-				Destroy(obj , 7);
+				Destroy(obj, 7);
 				count--;
 			}
 			Resources.UnloadUnusedAssets();
-			yield return new WaitForSeconds (interval);
-			if (PlayerCar == null)
+			yield return new WaitForSeconds(interval);
+			if(PlayerCar == null)
 				break;
 		}
-			SpawnStop();
+		SpawnStop();
 	}
 
-	public void SpawnStop () {
+	public void SpawnStop() {
 		StopCoroutine("SpawnEnemy");
 	}
-	
-	static public void ShortInterval () {
+
+	static public void ShortInterval() {
 		interval = interval * 0.9f;
 	}
 
-	public void getItem(){
-		Invoke ("endEnable",0.5f );
+	public void getItem() {
+		Invoke("endEnable", 0.5f);
 	}
 
-	public void invisibleItem(){
+	public void invisibleItem() {
 		Barieer.SetActiveRecursively(true);
-		Invoke ("endInvisible",15f );
+		Invoke("endInvisible", 15f);
 	}
 
-	private void endEnable(){
+	private void endEnable() {
 		MyItem.itemFlag = true;
 	}
 
-	private void endInvisible(){
+	private void endInvisible() {
 		MyItem.itemFlag = true;
 		gameObject.GetComponent<AudioSource>().PlayOneShot(endinvisible);
 		Barieer.SetActiveRecursively(false);

@@ -5,11 +5,11 @@ public class MyBomb : MyItem {
 	
 	protected override void collidedItemAction(GameObject collidedobject) {
 		itemFlag = false;
-		Debug.Log ("start");
+		Debug.Log("start");
 		timecontrol.getItem();
 		explodeCar(collidedobject);
 	}
-	
+
 	protected override void destroyItem(GameObject collideobject) {
 		collideobject.GetComponent<Detonator>().Explode();
 	}
@@ -19,8 +19,8 @@ public class MyBomb : MyItem {
 		iTween.RotateTo(collidedobject, iTween.Hash("x", 1440, "time", 1.5f));
 	}
 
-	protected override void setItemAppearedPosition (Transform cartransform) {
+	protected override void setItemAppearedPosition(Transform cartransform) {
 		Transform gameobjecttransform = gameObject.transform;
-		gameobjecttransform.position  = cartransform.position +  cartransform.up * 0.5f +  cartransform.forward * (-4);
+		gameobjecttransform.position = cartransform.position + cartransform.up * 0.5f + cartransform.forward * (-4);
 	}
 }

@@ -11,29 +11,32 @@ public class  CreateLoad : MonoBehaviour {
 	public int border = 250;
 	public int border2 = 200;
 
-	void Update (){
-		if ((PlayerCar != null) && PlayerCar.transform.position.z > border) {
-			CreateMap ();
+	void Update() {
+		if((PlayerCar != null) && PlayerCar.transform.position.z > border) {
+			CreateMap();
 		}
-			if ((PlayerCar != null) && PlayerCar.transform.position.z > border2) {
-				CreateDecorate ();
-			}
+		if((PlayerCar != null) && PlayerCar.transform.position.z > border2) {
+			CreateDecorate();
+		}
 	}
-	void CreateMap(){
-		if (Load1.transform.position.z < border) {
+
+	void CreateMap() {
+		if(Load1.transform.position.z < border) {
 			border += 250;
-			Vector3 temp = new Vector3 (0,0,border);
+			Vector3 temp = new Vector3(0, 0, border);
 			Load1.transform.position = temp;
-		} else if (Load2.transform.position.z < border) {
-			border += 250;
-			Vector3 temp = new Vector3 (0,0,border);
-			Load2.transform.position = temp;
-			Checkpoint.SetActiveRecursively(true);
 		}
+		else if(Load2.transform.position.z < border) {
+				border += 250;
+				Vector3 temp = new Vector3(0, 0, border);
+				Load2.transform.position = temp;
+				Checkpoint.SetActiveRecursively(true);
+			}
 
 	}
-	void CreateDecorate(){
-		decorate.transform.position = new Vector3 (0,0,border2);
+
+	void CreateDecorate() {
+		decorate.transform.position = new Vector3(0, 0, border2);
 		border2 += 200;
 	}
 }

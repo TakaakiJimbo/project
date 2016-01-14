@@ -5,10 +5,12 @@ using System.Collections;
 public class CameraFix : MonoBehaviour {
 
 	#region(inspector settings)
+
 	public int fixWidth = 1280;
 	public int fixHeight = 720;
 	public bool portrait = false;
 	public Camera[] fixedCamera;
+
 	#endregion
 
 	public static float resolutionScale = -1.0f;
@@ -18,9 +20,9 @@ public class CameraFix : MonoBehaviour {
 		int fh = portrait ? this.fixWidth : this.fixHeight;
 
 		// camera
-		if( this.fixedCamera != null ){
+		if(this.fixedCamera != null) {
 			Rect set_rect = this.calc_aspect(fw, fh, out resolutionScale);
-			foreach( Camera cam in this.fixedCamera ){
+			foreach(Camera cam in this.fixedCamera) {
 				cam.rect = set_rect;
 			}
 		}
@@ -40,13 +42,14 @@ public class CameraFix : MonoBehaviour {
 		float scale = window_aspect / target_aspect;
 
 		Rect rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
-		if( 1.0f > scale ){
+		if(1.0f > scale) {
 			rect.x = 0;
 			rect.width = 1.0f;
 			rect.y = (1.0f - scale) / 2.0f;
 			rect.height = scale;
 			res_scale = (float)Screen.width / width;
-		} else {
+		}
+		else {
 			scale = 1.0f / scale;
 			rect.x = (1.0f - scale) / 2.0f;
 			rect.width = scale;
@@ -57,4 +60,4 @@ public class CameraFix : MonoBehaviour {
 
 		return rect;
 	}
-}        
+}

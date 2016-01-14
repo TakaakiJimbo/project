@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public static class GameObjectExtensions
-{
+public static class GameObjectExtensions {
 	/// <summary>
 	/// 深い階層まで子オブジェクトを名前で検索して GameObject 型で取得します
 	/// </summary>
@@ -10,7 +9,7 @@ public static class GameObjectExtensions
 	/// <param name="name">検索するオブジェクトの名前</param>
 	/// <param name="includeInactive">非アクティブなオブジェクトも検索する場合 true</param>
 	/// <returns>子オブジェクト</returns>
-	public static GameObject FindDeep( 
+	public static GameObject FindDeep(
 	                                  this GameObject self, 
 	                                  string name, 
 	                                  bool includeInactive = false )

@@ -13,48 +13,46 @@ public class MeshCombiner : MonoBehaviour {
 	
 	
 	public GameObject generatedObject = null;
-	
-	[ContextMenu("Export")]
-	void Init ()
-	{
-		Component[] meshFilters = GetComponentsInChildren<MeshFilter>(true);
-		Dictionary<Material, List<CombineInstance>> combineMeshInstanceDictionary = new Dictionary<Material, List<CombineInstance>> ();
 
-		foreach (var mesh in meshFilters) {
+	[ContextMenu("Export")]
+	void Init() {
+		Component[] meshFilters = GetComponentsInChildren<MeshFilter>(true);
+		Dictionary<Material, List<CombineInstance>> combineMeshInstanceDictionary = new Dictionary<Material, List<CombineInstance>>();
+
+		foreach(var mesh in meshFilters) {
 			
-			var mat = mesh.GetComponent<Renderer>().sharedMaterial ;
+			var mat = mesh.GetComponent<Renderer>().sharedMaterial;
 			
-			if( mat == null )
+			if(mat == null)
 				continue;
 			
-			if(!combineMeshInstanceDictionary.ContainsKey(mat) )
-			{
-				combineMeshInstanceDictionary.Add( mat, new List<CombineInstance>());
+			if(!combineMeshInstanceDictionary.ContainsKey(mat)) {
+				combineMeshInstanceDictionary.Add(mat, new List<CombineInstance>());
 			}
-			var instance = combineMeshInstanceDictionary[ mat ];
+			var instance = combineMeshInstanceDictionary[mat];
 			var cmesh = new CombineInstance();
 			cmesh.transform = mesh.transform.localToWorldMatrix;
-			cmesh.mesh = ((MeshFilter) mesh).sharedMesh;
+			cmesh.mesh = ((MeshFilter)mesh).sharedMesh;
 			instance.Add(cmesh);
 		}
 		
-		gameObject.SetActive (false);
+		gameObject.SetActive(false);
 		gameObject.tag = "EditorOnly";
 		
 		
-		if( generatedObject == null)
-			generatedObject = new GameObject (name);
+		if(generatedObject == null)
+			generatedObject = new GameObject(name);
 
-		foreach (var item in generatedObject.GetComponentsInChildren<Transform>()) {
-			if( item == generatedObject.transform )
+		foreach(var item in generatedObject.GetComponentsInChildren<Transform>()) {
+			if(item == generatedObject.transform)
 				continue;
 			
-			DestroyImmediate (item.gameObject);
+			DestroyImmediate(item.gameObject);
 		}
 		
 		generatedObject.isStatic = true;
 		
-		foreach (var dic in combineMeshInstanceDictionary) {
+		foreach(var dic in combineMeshInstanceDictionary) {
 			
 			var newObject = new GameObject(dic.Key.name);
 			newObject.isStatic = true;
@@ -65,26 +63,24 @@ public class MeshCombiner : MonoBehaviour {
 			meshrenderer.material = dic.Key;
 			var mesh = new Mesh();
 			mesh.CombineMeshes(dic.Value.ToArray());
-			Unwrapping.GenerateSecondaryUVSet( mesh);
+			Unwrapping.GenerateSecondaryUVSet(mesh);
 			meshfilter.sharedMesh = mesh;
 			newObject.transform.parent = generatedObject.transform;
 
 			Debug.Log(Application.loadedLevelName);
-			System.IO.Directory.CreateDirectory( "Assets/" + Application.loadedLevelName + "/" + name );
-			AssetDatabase.CreateAsset(mesh, "Assets/" + Application.loadedLevelName+ "/" + name + "/" + dic.Key.name + ".asset");
+			System.IO.Directory.CreateDirectory("Assets/" + Application.loadedLevelName + "/" + name);
+			AssetDatabase.CreateAsset(mesh, "Assets/" + Application.loadedLevelName + "/" + name + "/" + dic.Key.name + ".asset");
 		}
 	}
-	
-	void OnEnable()
-	{
-		if (generatedObject != null) {
+
+	void OnEnable() {
+		if(generatedObject != null) {
 			generatedObject.SetActive(false);
 		}
 	}
-	
-	void OnDisable()
-	{
-		if (generatedObject != null) {
+
+	void OnDisable() {
+		if(generatedObject != null) {
 			generatedObject.SetActive(true);
 		}
 	}

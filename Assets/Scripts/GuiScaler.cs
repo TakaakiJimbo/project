@@ -1,39 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GuiScaler
-{
-	
-	#region public property
-	
-	
-	
-	#endregion
-	
+public class GuiScaler {
+
 	#region private property
-	
+
 	float _scale;
 	Vector2 _offset;
-	
+
 	#endregion
-	
+
 	#region constructer
-	
-	public GuiScaler (
-		int fixWidth = 640, 
-		int fixHeight = 960, 
-		bool isPortrait = false
-		)
-	{
-		Calc (fixWidth, fixHeight, isPortrait);
+
+	public GuiScaler(int fixWidth = 640, int fixHeight = 960, bool isPortrait = false) {
+		Calc(fixWidth, fixHeight, isPortrait);
 	}
-	
+
 	#endregion
-	
+
 	#region private method
-	
-	void Calc (int w, int h, bool portrait)
-	{
+
+	void Calc(int w, int h, bool portrait) {
 		
 		float width = portrait ? h : w;
 		float height = portrait ? w : h;
@@ -42,15 +29,16 @@ public class GuiScaler
 		float window_aspect = (float)Screen.width / (float)Screen.height;
 		float scale = window_aspect / target_aspect;
 		
-		Rect _rect = new Rect (0.0f, 0.0f, 1.0f, 1.0f);
-		if (1.0f > scale) {
+		Rect _rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
+		if(1.0f > scale) {
 			_rect.x = 0;
 			_rect.width = 1.0f;
 			_rect.y = (1.0f - scale) / 2.0f;
 			_rect.height = scale;
 			
 			_scale = (float)Screen.width / width;
-		} else {
+		}
+		else {
 			scale = 1.0f / scale;
 			_rect.x = (1.0f - scale) / 2.0f;
 			_rect.width = scale;
@@ -64,58 +52,42 @@ public class GuiScaler
 		_offset.y = _rect.y * Screen.height;
 		
 	}
-	
+
 	#endregion
-	
+
 	#region public method
+
 	
 	
-	
-	public Rect GetRect (float x, float y, float width, float height)
-	{ 
+	public Rect GetRect(float x, float y, float width, float height) { 
 		
 		
 		Rect rect 
-			= new Rect 
-				(
-					_offset.x + (x * _scale),
-					_offset.y + (y * _scale), 
-					width * _scale, 
-					height * _scale
-					);
+			= new Rect(_offset.x + (x * _scale), _offset.y + (y * _scale), width * _scale, height * _scale);
 		
 		return rect;
 		
 	}
-	
-	public Rect GetRect (Rect rect)
-	{
-		return GetRect (rect.x, rect.y, rect.width, rect.height);
+
+	public Rect GetRect(Rect rect) {
+		return GetRect(rect.x, rect.y, rect.width, rect.height);
 	}
-	
-	public Rect GetRectHalf (float x, float y, float width, float height)
-	{
+
+	public Rect GetRectHalf(float x, float y, float width, float height) {
 		
 		
 		
 		Rect rect 
-			= new Rect 
-				(
-					(_offset.x + (x * _scale)) / 2,
-					(_offset.y + (y * _scale)) / 2, 
-					(width * _scale) / 2, 
-					(height * _scale) / 2
-					);
+			= new Rect((_offset.x + (x * _scale)) / 2, (_offset.y + (y * _scale)) / 2, (width * _scale) / 2, (height * _scale) / 2);
 		
 		return rect;
 		
 	}
-	
-	public Rect GetRectHalf (Rect rect)
-	{
-		return GetRectHalf (rect.x, rect.y, rect.width, rect.height);	
+
+	public Rect GetRectHalf(Rect rect) {
+		return GetRectHalf(rect.x, rect.y, rect.width, rect.height);	
 	}
-	
+
 	#endregion
 	
 	

@@ -13,45 +13,45 @@ public class MyLevelControl : MonoBehaviour {
 	[SerializeField]  private GameObject Accelerate;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		audioSource = gameObject.GetComponent<AudioSource>();
-		audioSource.clip =  checkedsound;
+		audioSource.clip = checkedsound;
 		//debug only
 		level = firstlevel;
-		itemGenerate (1);
-		if(firstlevel > 1){
-			for(int i = 1; i <= firstlevel; i++){
+		itemGenerate(1);
+		if(firstlevel > 1) {
+			for(int i = 1;i <= firstlevel;i++) {
 				MyTimeControl.ShortInterval();
 			}
 			targetcamera.showNowLevel(level);
 		}
 	}
 
-	public void levelup(){
+	public void levelup() {
 		level++;
 		audioSource.Play();
 		MyTimeControl.ShortInterval();
 		targetcamera.showNowLevel(level);
-		if((level - 1)  % 3 == 0){
+		if((level - 1) % 3 == 0) {
 			itemGenerate(level);
 		}
 	}
 
-	void itemGenerate(int level){
+	void itemGenerate(int level) {
 		float position;
 
 
 		int itemposition = level * 500 - 600;
-		if(level == 1){
+		if(level == 1) {
 			itemposition = 100;
 		}
 
-		GameObject obj = (GameObject)Instantiate(Heal, new Vector3 (UnityEngine.Random.Range (-18f, 18f), 1f, UnityEngine.Random.Range (-5f, 5f) + itemposition),Quaternion.identity);
-		GameObject obj2 = (GameObject)Instantiate(Accelerate, new Vector3 (UnityEngine.Random.Range (-10f, 10f), 1f, UnityEngine.Random.Range (-5f, 5f) + itemposition),Quaternion.identity);
-		GameObject obj3 = (GameObject)Instantiate(Invinsible, new Vector3 (UnityEngine.Random.Range (-18f, 18f), 1f, UnityEngine.Random.Range (-5f, 5f) + itemposition),Quaternion.identity);
-		Destroy(obj , 15);
+		GameObject obj = (GameObject)Instantiate(Heal, new Vector3(UnityEngine.Random.Range(-18f, 18f), 1f, UnityEngine.Random.Range(-5f, 5f) + itemposition), Quaternion.identity);
+		GameObject obj2 = (GameObject)Instantiate(Accelerate, new Vector3(UnityEngine.Random.Range(-10f, 10f), 1f, UnityEngine.Random.Range(-5f, 5f) + itemposition), Quaternion.identity);
+		GameObject obj3 = (GameObject)Instantiate(Invinsible, new Vector3(UnityEngine.Random.Range(-18f, 18f), 1f, UnityEngine.Random.Range(-5f, 5f) + itemposition), Quaternion.identity);
+		Destroy(obj, 15);
 		Destroy(obj2, 15);
-		Destroy(obj3 , 15);
+		Destroy(obj3, 15);
 		Resources.UnloadUnusedAssets();
 	}
 
