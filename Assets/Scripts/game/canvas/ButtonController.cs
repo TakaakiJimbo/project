@@ -8,9 +8,9 @@ public class ButtonController : MonoBehaviour {
 	MyCarLifePoint carLife;
 
 	void Start() {
-		gameObject.transform.FindChild("Retry").gameObject.SetActive(false); 
-		gameObject.transform.FindChild("Title").gameObject.SetActive(false); 
-		gameObject.transform.FindChild("Stop").gameObject.SetActive(false); 
+		gameObject.transform.FindChild("Retry").gameObject.SetActive(false);
+		gameObject.transform.FindChild("Title").gameObject.SetActive(false);
+		gameObject.transform.FindChild("Stop").gameObject.SetActive(false);
 		carLife = GameObject.Find("Car0").GetComponent<MyCarLifePoint>();
 	}
 
@@ -37,11 +37,11 @@ public class ButtonController : MonoBehaviour {
 	}
 
 	private IEnumerator ResultGame() {
-		gameObject.transform.FindChild("Stop").gameObject.SetActive(false); 
+		gameObject.transform.FindChild("Stop").gameObject.SetActive(false);
 		yield return new WaitForSeconds(2.0f);
 		Time.timeScale = 0f;
 		carLife.checkScore();
-		gameObject.transform.FindChild("Retry").gameObject.SetActive(true); 
-		gameObject.transform.FindChild("Title").gameObject.SetActive(true); 
+		gameObject.transform.FindChild("Retry").gameObject.SetActive(true);
+		gameObject.transform.FindChild("Title").gameObject.SetActive(true);
 	}
 }

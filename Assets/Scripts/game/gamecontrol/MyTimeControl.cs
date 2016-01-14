@@ -52,7 +52,7 @@ public class MyTimeControl : MyGameControl {
 					countdownflag = false;
 					reflectCountDown(limittime - pastTime.Seconds);
 					timeStart();
-					GameObject.Find("Canvas").transform.FindChild("Stop").gameObject.SetActive(true); 
+					GameObject.Find("Canvas").transform.FindChild("Stop").gameObject.SetActive(true);
 					StartCoroutine("SpawnEnemy");
 					//StartCoroutine("ProhibitStop");
 					removeCarKinematic();

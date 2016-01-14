@@ -8,10 +8,10 @@ using UnityEditor;
 
 [ExecuteInEditMode]
 public class MeshCombiner : MonoBehaviour {
-	
+
 	#if UNITY_EDITOR
-	
-	
+
+
 	public GameObject generatedObject = null;
 
 	[ContextMenu("Export")]
@@ -20,12 +20,12 @@ public class MeshCombiner : MonoBehaviour {
 		Dictionary<Material, List<CombineInstance>> combineMeshInstanceDictionary = new Dictionary<Material, List<CombineInstance>>();
 
 		foreach(var mesh in meshFilters) {
-			
+
 			var mat = mesh.GetComponent<Renderer>().sharedMaterial;
-			
+
 			if(mat == null)
 				continue;
-			
+
 			if(!combineMeshInstanceDictionary.ContainsKey(mat)) {
 				combineMeshInstanceDictionary.Add(mat, new List<CombineInstance>());
 			}
@@ -35,31 +35,31 @@ public class MeshCombiner : MonoBehaviour {
 			cmesh.mesh = ((MeshFilter)mesh).sharedMesh;
 			instance.Add(cmesh);
 		}
-		
+
 		gameObject.SetActive(false);
 		gameObject.tag = "EditorOnly";
-		
-		
+
+
 		if(generatedObject == null)
 			generatedObject = new GameObject(name);
 
 		foreach(var item in generatedObject.GetComponentsInChildren<Transform>()) {
 			if(item == generatedObject.transform)
 				continue;
-			
+
 			DestroyImmediate(item.gameObject);
 		}
-		
+
 		generatedObject.isStatic = true;
-		
+
 		foreach(var dic in combineMeshInstanceDictionary) {
-			
+
 			var newObject = new GameObject(dic.Key.name);
 			newObject.isStatic = true;
-			
+
 			var meshrenderer = newObject.AddComponent<MeshRenderer>();
 			var meshfilter = newObject.AddComponent<MeshFilter>();
-			
+
 			meshrenderer.material = dic.Key;
 			var mesh = new Mesh();
 			mesh.CombineMeshes(dic.Value.ToArray());

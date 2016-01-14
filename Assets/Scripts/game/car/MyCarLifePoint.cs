@@ -69,8 +69,8 @@ public class MyCarLifePoint : MyCar {
 			audiosource.PlayOneShot(diedsound);
 			iTween.ScaleTo(gameObject, iTween.Hash("x", 0, "y  ", 0, "z", 0, "time", 0.0f));
 		}
-		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(true); 
-		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(true); 
+		GameObject.Find("Canvas").transform.FindChild("Retry").gameObject.SetActive(true);
+		GameObject.Find("Canvas").transform.FindChild("Title").gameObject.SetActive(true);
 	}
 
 	public void checkScore() {

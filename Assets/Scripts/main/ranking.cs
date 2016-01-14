@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ranking : MonoBehaviour {
-
 	// Use this for initialization
 	void Start() {
 		for(int i = 0;i < 10;i++) {

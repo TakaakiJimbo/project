@@ -4,7 +4,7 @@ using System.Collections;
 public class MyAccelerate : MyItem {
 
 	void FixedUpdate() {
-		gameObject.transform.Rotate(0, 4f, 0);	
+		gameObject.transform.Rotate(0, 4f, 0);
 	}
 
 	protected override void collidedItemAction(GameObject collidedobject) {

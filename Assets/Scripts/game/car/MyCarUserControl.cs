@@ -20,7 +20,7 @@ namespace UnityStandardAssets.Vehicles.Car {
 			float h = Input.GetAxis("Mouse X");
 			float v = 0.2f;
 //			float v        = CrossPlatformInputManager.GetAxis("Vertical"+identifier);
-//			bool  use      = CrossPlatformInputManager.GetButtonDown ("Useitem"+identifier); 
+//			bool  use      = CrossPlatformInputManager.GetButtonDown ("Useitem"+identifier);
 			car.Move(15f * h, v, v, 0f);
 //			item.useItem (use);
 		}

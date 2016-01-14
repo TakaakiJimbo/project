@@ -10,9 +10,9 @@ public static class GameObjectExtensions {
 	/// <param name="includeInactive">非アクティブなオブジェクトも検索する場合 true</param>
 	/// <returns>子オブジェクト</returns>
 	public static GameObject FindDeep(
-	                                  this GameObject self, 
-	                                  string name, 
-	                                  bool includeInactive = false )
+		this GameObject self,
+		string name,
+		bool includeInactive = false )
 	{
 		var children = self.GetComponentsInChildren<Transform>( includeInactive );
 		foreach ( var transform in children )
@@ -35,10 +35,10 @@ public static class ComponentExtensions
 	/// <param name="name">検索するオブジェクトの名前</param>
 	/// <param name="includeInactive">非アクティブなオブジェクトも検索する場合 true</param>
 	/// <returns>子オブジェクト</returns>
-	public static GameObject FindDeep( 
-	                                  this Component self, 
-	                                  string name, bool 
-	                                  includeInactive = false )
+	public static GameObject FindDeep(
+		this Component self,
+		string name, bool
+		includeInactive = false )
 	{
 		var children = self.GetComponentsInChildren<Transform>( includeInactive );
 		foreach ( var transform in children )

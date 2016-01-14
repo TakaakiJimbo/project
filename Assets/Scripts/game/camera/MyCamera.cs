@@ -19,7 +19,7 @@ public class MyCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake() {
-		timecounter = gameObject.FindDeep("TimeCounter").gameObject.GetComponent<Text>(); 
+		timecounter = gameObject.FindDeep("TimeCounter").gameObject.GetComponent<Text>();
 		lifepoint = gameObject.FindDeep("LifePoint").gameObject.GetComponent<Text>();
 		level = gameObject.FindDeep("Level").gameObject.GetComponent<Text>();
 		score = gameObject.FindDeep("Score").gameObject.GetComponent<Text>();
