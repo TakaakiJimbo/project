@@ -27,12 +27,11 @@ public class  CreateLoad : MonoBehaviour {
 			Load1.transform.position = temp;
 		}
 		else if(Load2.transform.position.z < border) {
-				border += 250;
-				Vector3 temp = new Vector3(0, 0, border);
-				Load2.transform.position = temp;
-				Checkpoint.SetActiveRecursively(true);
-			}
-
+			border += 250;
+			Vector3 temp = new Vector3(0, 0, border);
+			Load2.transform.position = temp;
+			Checkpoint.SetActiveRecursively(true);
+		}
 	}
 
 	void CreateDecorate() {
